@@ -16,15 +16,28 @@
 }
 
 *{ box-sizing: border-box; }
-html,body{ height: 100%; }
+html,body{ 
+  height: 100%;
+  margin: 0;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+ }
 body{
   margin:0;
   font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial;
   color: var(--text);
   background: radial-gradient(1200px 600px at 20% 0%, rgba(124,92,255,0.18), transparent 60%),
               radial-gradient(900px 500px at 80% 10%, rgba(0,220,255,0.12), transparent 55%),
+              /* url("/assets/img/bg.jpg"), */
               var(--bg);
-}
+
+              background-repeat: no-repeat, no-repeat, no-repeat;
+              background-attachment: fixed, fixed, fixed;
+              background-size: cover, cover, cover;
+              /* background-position: center; */
+              /* background-blend-mode: screen; */
+
+            }
 
 /* =========================
    Layout
@@ -62,6 +75,9 @@ body{
   backdrop-filter: blur(12px);
 }
 .topbar__right{ display:flex; gap:10px; }
+
+
+
 
 /* =========================
    Drawer / Overlay
@@ -433,57 +449,339 @@ code{
 
 
 
+/* =========================
+   Loading Screen
+   ========================= */
+#loadingScreen{
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+
+  background: var(--bg, #0b0f17);
+  color: var(--text, #e6eaf2);
+
+  opacity: 1;
+  transition: opacity 0.35s ease;
+}
+
+#loadingScreen.is-hidden{
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Optional: if you want it to fully "go away" after fade */
+#loadingScreen.is-gone{
+  display: none;
+}
+
+/* Spinner */
+#loadingScreen .loader{
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 3px solid rgba(255,255,255,0.18);
+  border-top-color: rgba(255,255,255,0.85);
+  animation: sudoxsSpin 0.9s linear infinite;
+}
+
+#loadingScreen .loadingText{
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  opacity: 0.85;
+}
+
+@keyframes sudoxsSpin{
+  to{ transform: rotate(360deg); }
+}
 
 
 
 
+/* Center wrapper (overlay in the middle of the page) */
+.topbar .center-system{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  pointer-events: none;
+}
+
+.topbar .center-system a{
+  pointer-events: auto;
+}
 
 
 
+.hacker-btn {
+  pointer-events: auto;
+  position: relative;
+  z-index: 1;
 
+  padding: 18px 20px;
+  background: rgba(20, 20, 60, 0.9);
+  color: #b3b3ff;
+  border: 2px solid #4b4bff;
+  border-radius: 12px;
 
-
-/* 
-
-.mbtn{
-  --main-color: rgb(46, 213, 115);
-  --main-bg-color: rgba(46, 213, 116, 0.36);
-  --pattern-color: rgba(46, 213, 116, 0.073);
-
-  display: inline-block;              
-  position: relative;                
-  cursor: pointer;
+  font-size: 18px;
+  font-family: "Courier New", monospace;
   text-transform: uppercase;
-  letter-spacing: 0.5rem;
+  letter-spacing: 2px;
 
-  filter: hue-rotate(0deg);
+  cursor: pointer;
+  overflow: hidden;
 
-  background:
-    radial-gradient(circle, var(--main-bg-color) 0%, rgba(0,0,0,0) 95%),
-    linear-gradient(var(--pattern-color) 1px, transparent 1px),
-    linear-gradient(to right, var(--pattern-color) 1px, transparent 1px);
+  text-decoration: none;
+  display: inline-block;
 
-  background-repeat: no-repeat, repeat, repeat;   
-  background-size: 100% 100%, 15px 15px, 15px 15px;
-  background-position: center, center, center;
-
-  border-image: radial-gradient(circle, var(--main-color) 0%, rgba(0,0,0,0) 100%) 1;
-  border-width: 1px 0;
-  border-style: solid;
-
-  color: var(--main-color);
-  padding: 1rem 1rem;
-  font-weight: 700;
-  font-size: 1rem;
-
-  transition: background-size 0.2s ease-in-out, filter 0.25s ease;
-  will-change: background-size; 
+  transition: all 0.3s ease;
+  box-shadow:
+    0 0 15px rgba(75, 75, 255, 0.3),
+    inset 0 0 10px rgba(75, 75, 255, 0.2);
 }
 
-.mbtn:hover{
-  background-size: 100% 100%, 10px 10px, 10px 10px;
+/* Terminal swipe effect */
+.hacker-btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(75, 75, 255, 0.3),
+    transparent
+  );
+  animation: terminal-swipe 3s infinite linear;
 }
 
-.mbtn:active{
-  filter: hue-rotate(250deg);
-} */
+.hacker-btn:hover::before {
+  animation: terminal-swipe 1s infinite linear;
+}
+
+.hacker-btn:hover {
+  color: #ffffff;
+  box-shadow:
+    0 0 25px rgba(75, 75, 255, 0.7),
+    0 0 40px rgba(75, 75, 255, 0.4);
+  transform: scale(1.03);
+}
+
+/* Cursor blink */
+.hacker-btn::after {
+  content: "_";
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #00ff99;
+  font-size: 20px;
+  animation: cursor-blink 0.8s infinite step-end;
+}
+
+/* Animations */
+@keyframes data-stream {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-10px); }
+}
+
+@keyframes terminal-swipe {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+@keyframes cursor-blink {
+  0% { opacity: 1; }
+  50% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+
+
+
+
+
+
+
+
+/* =========================
+   Content File Tree (ASCII)
+   ========================= */
+.file-tree {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.file-tree ul {
+  margin: 0;
+  padding-left: 1.25rem;
+  list-style: none;
+  position: relative;
+}
+
+.file-tree li {
+  position: relative;
+  padding: 2px 0;
+  white-space: nowrap;
+}
+
+/* vertical guide line for nested ULs */
+.file-tree li:not(:last-child) > ul::before {
+  content: "";
+  position: absolute;
+  left: 0.25rem;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: rgba(255,255,255,0.18);
+}
+
+/* branch symbols */
+.file-tree li::before {
+  content: "├── ";
+  color: rgba(255,255,255,0.55);
+}
+
+.file-tree li:last-child::before {
+  content: "└── ";
+}
+
+/* clickable folder row */
+.file-tree .tree-row {
+  display: inline-flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.file-tree .tree-toggle {
+  appearance: none;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.04);
+  color: rgba(255,255,255,0.85);
+  border-radius: 8px;
+  padding: 0 8px;
+  height: 24px;
+  cursor: pointer;
+}
+
+.file-tree .tree-toggle:hover {
+  background: rgba(255,255,255,0.07);
+}
+
+.file-tree a.tree-link {
+  color: var(--text, #e6eaf2);
+  text-decoration: none;
+  border-bottom: 1px dotted rgba(255,255,255,0.25);
+}
+
+.file-tree a.tree-link:hover {
+  border-bottom-color: rgba(255,255,255,0.65);
+}
+
+.file-tree .muted {
+  color: rgba(255,255,255,0.6);
+}
+
+
+
+.main{
+  position: relative;
+  z-index: 2;
+}
+
+
+
+/* =========================
+   Side Panels
+   ========================= */
+.side{
+  position: fixed;
+  top: 96px;          
+  width: 220px;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.side.left{ left: 12px; }
+.side.right{ right: 12px; }
+
+.sideBox{
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,0.03);
+  backdrop-filter: blur(6px);
+  border-radius: 14px;
+  padding: 14px;
+  font-family: ui-monospace, monospace;
+  text-align: center;
+}
+
+.sideTitle{
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+
+.sideText{
+  font-size: 14px;
+  color: var(--text);
+}
+
+/* موبایل: مخفی */
+@media (max-width: 900px){
+  .side{ display: none; }
+}
+
+
+
+/* =========================
+   Ambient Side Motion
+   ========================= */
+body::before,
+body::after{
+  content:"";
+  position: fixed;
+  top:0;
+  bottom:0;
+  width: 260px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+body::before{
+  left:0;
+  background: radial-gradient(
+    300px 80% at left center,
+    rgba(124,92,255,0.10),
+    transparent 70%
+  );
+  animation: sideDriftL 22s ease-in-out infinite alternate;
+}
+
+body::after{
+  right:0;
+  background: radial-gradient(
+    300px 80% at right center,
+    rgba(0,220,255,0.08),
+    transparent 70%
+  );
+  animation: sideDriftR 26s ease-in-out infinite alternate;
+}
+
+@keyframes sideDriftL{
+  from{ transform: translateY(0); }
+  to{ transform: translateY(-40px); }
+}
+
+@keyframes sideDriftR{
+  from{ transform: translateY(0); }
+  to{ transform: translateY(-60px); }
+}

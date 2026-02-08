@@ -1,7 +1,7 @@
 // =========================
 // sudoxs_web - site.js
 // - English-only comments by request
-// - No innerHTML for untrusted strings (safe DOM updates)
+// - Safe DOM updates (no innerHTML for untrusted strings)
 // =========================
 
 // =========================
@@ -16,6 +16,10 @@ function getBasePath() {
 function withBase(urlPath) {
   const base = getBasePath();
   if (!urlPath) return base || "";
+
+  // If already prefixed with base (avoid double prefix)
+  if (base && urlPath.startsWith(base + "/")) return urlPath;
+
   if (!urlPath.startsWith("/")) return (base ? base + "/" : "/") + urlPath;
   return (base || "") + urlPath;
 }
@@ -45,8 +49,10 @@ function closeDrawer() {
 btnOpen?.addEventListener("click", openDrawer);
 btnClose?.addEventListener("click", closeDrawer);
 overlay?.addEventListener("click", closeDrawer);
+
 document.addEventListener("keydown", (e) => {
-  if (e.key === "Escape") closeDrawer();
+  // Only close when drawer is open
+  if (e.key === "Escape" && drawer?.classList.contains("isOpen")) closeDrawer();
 });
 
 // =========================
@@ -193,7 +199,6 @@ function renderFolder(folderPath) {
   const folders = [...node.children.values()].sort((a, b) => a.name.localeCompare(b.name));
   for (const f of folders) {
     const row = el("div", "drawerItem");
-    row.classList.toggle("isActive", `${folderPath}/${f.name}` === CURRENT_FOLDER);
 
     const left = el("div", "drawerItem__left");
     const icon = el("div", "icon");
@@ -247,6 +252,93 @@ function renderFolder(folderPath) {
 }
 
 // =========================
+// Content File Tree (ASCII)
+// - Renders full /content directory as nested lists
+// - Files/pages are links
+// - Requires an element: <div id="contentTree" class="file-tree"></div>
+// =========================
+function renderContentTree(mountId = "contentTree", rootPath = "/content") {
+  const mount = document.getElementById(mountId);
+  if (!mount || !TREE) return;
+
+  mount.textContent = "";
+
+  const rootNode = findNodeByPath(TREE, rootPath);
+  if (!rootNode) {
+    const msg = el("div", "muted small");
+    msg.textContent = "Content folder not found in index.";
+    mount.appendChild(msg);
+    return;
+  }
+
+  const ul = el("ul");
+  mount.appendChild(ul);
+  buildNodeList(rootNode, rootPath, ul);
+}
+
+function buildNodeList(node, folderPath, parentUl) {
+  const folders = [...node.children.values()].sort((a, b) => a.name.localeCompare(b.name));
+  const items = [...node.items].sort((a, b) => a.name.localeCompare(b.name));
+
+  // Folders
+  for (const f of folders) {
+    const li = el("li");
+
+    const row = el("span", "tree-row");
+
+    const toggle = el("button", "tree-toggle");
+    toggle.type = "button";
+    toggle.textContent = "Open";
+
+    const label = el("span");
+    label.textContent = `📁 ${f.name}`;
+
+    row.appendChild(toggle);
+    row.appendChild(label);
+    li.appendChild(row);
+
+    const childUl = el("ul");
+    childUl.hidden = true;
+    li.appendChild(childUl);
+
+    const childPath = `${folderPath}/${f.name}`;
+    let isOpen = false;
+
+    toggle.addEventListener("click", () => {
+      isOpen = !isOpen;
+      toggle.textContent = isOpen ? "Close" : "Open";
+      childUl.hidden = !isOpen;
+
+      // Lazy render once
+      if (isOpen && childUl.childNodes.length === 0) {
+        buildNodeList(f, childPath, childUl);
+      }
+    });
+
+    parentUl.appendChild(li);
+  }
+
+  // Files/pages
+  for (const it of items) {
+    const li = el("li");
+
+    const a = el("a", "tree-link");
+    a.href = withBase(it.url);
+    a.rel = "noopener";
+    a.textContent = `${it.kind === "page" ? "📝" : "📄"} ${it.name}`;
+
+    li.appendChild(a);
+    parentUl.appendChild(li);
+  }
+
+  if (folders.length === 0 && items.length === 0) {
+    const li = el("li");
+    li.textContent = "(empty)";
+    parentUl.appendChild(li);
+  }
+}
+
+// =========================
 // Secure Search (results inside drawer)
 // =========================
 function normalize(s) {
@@ -270,8 +362,9 @@ function attachSearch(allItems) {
 
     const matches = allItems
       .filter(x => {
-        const where = `${x.path || ""} ${x.url || ""}`;
-        return where.includes("content/");
+        const where = normalize(`${x.path || ""} ${x.url || ""}`);
+        // Accept both "content/" and "/content/"
+        return where.includes("content/") || where.includes("/content/");
       })
       .filter(x => {
         const title = x.type === "page" ? x.title : x.name;
@@ -342,6 +435,9 @@ function attachSearch(allItems) {
 
     // Initial view: content root inside drawer
     renderFolder("/content");
+
+    // Optional: render full content tree if #contentTree exists on page
+    renderContentTree("contentTree", "/content");
   } catch (e) {
     console.error(e);
     const list = getDrawerList();
@@ -350,51 +446,30 @@ function attachSearch(allItems) {
 })();
 
 
+// =========================
+// Loading Screen
+// - Hide on DOM ready (faster UX than window.load)
+// - Fade out smoothly, then optionally remove from layout
+// =========================
+(function initLoadingScreen() {
+  function hideLoader() {
+    const loader = document.getElementById("loadingScreen");
+    if (!loader) return;
 
+    // fade out
+    loader.classList.add("is-hidden");
+    loader.setAttribute("aria-hidden", "true");
 
+    // optional: remove after transition
+    window.setTimeout(() => {
+      loader.classList.add("is-gone");
+    }, 420);
+  }
 
-
-
-
-
-
-
-
-
-
-
-
-
-// document.addEventListener("DOMContentLoaded", () => {
-//   const drawer = document.getElementById("drawer");
-//   const openBtn = document.getElementById("drawerOpen");
-//   const closeBtn = document.getElementById("drawerClose");
-//   const overlay = document.getElementById("overlay"); // اگر داری
-
-//   if (!drawer || !openBtn || !closeBtn) return;
-
-//   function openDrawer() {
-//     drawer.classList.add("isOpen");
-//     drawer.setAttribute("aria-hidden", "false");
-//     openBtn.setAttribute("aria-expanded", "true");
-//     openBtn.classList.add("isActive");
-//     if (overlay) overlay.hidden = false;
-//   }
-
-//   function closeDrawer() {
-//     drawer.classList.remove("isOpen");
-//     drawer.setAttribute("aria-hidden", "true");
-//     openBtn.setAttribute("aria-expanded", "false");
-//     openBtn.classList.remove("isActive");
-//     if (overlay) overlay.hidden = true;
-//   }
-
-//   openBtn.addEventListener("click", openDrawer);
-//   closeBtn.addEventListener("click", closeDrawer);
-
-//   if (overlay) overlay.addEventListener("click", closeDrawer);
-
-//   document.addEventListener("keydown", (e) => {
-//     if (e.key === "Escape") closeDrawer();
-//   });
-// });
+  // Hide as soon as the DOM is ready (not waiting for images/fonts)
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", hideLoader, { once: true });
+  } else {
+    hideLoader();
+  }
+})();

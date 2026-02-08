@@ -22,20 +22,24 @@
     {% endif %}
     <meta name="site-base" content="{{ _base }}" />
 
-    <!-- IMPORTANT:
-         Using <base> makes ALL relative links work under the repo path on GitHub Pages. -->
+    <!-- Keep <base> for plain relative links -->
     <base href="{% if _base == "" %}/{% else %}{{ _base }}/{% endif %}">
 
     <!-- =========================
-         Styles
+         Styles (robust under any base)
          ========================= -->
-    <link rel="stylesheet" href="assets/css/site.css" />
+    <link rel="stylesheet" href="{{ '/assets/css/site.css' | relative_url }}" />
   </head>
 
   <body>
-    <!-- =========================
-         App Shell
-         ========================= -->
+    <!-- Loading Screen -->
+    <div id="loadingScreen" aria-hidden="false" role="status" aria-live="polite">
+      <div class="loader" aria-label="Loading"></div>
+      <div class="loadingText">Loading…</div>
+    </div>
+
+
+    <!-- App Shell -->
     <div class="app">
 
       <!-- =========================
@@ -72,15 +76,11 @@
 
         <!-- =========================
              Drawer Vault Explorer
-             - Folder browsing + search results live here
              ========================= -->
         <nav class="drawer__nav">
           <div class="navTitle">Vault</div>
-
-          <!-- Breadcrumb inside drawer -->
           <div id="drawerBreadcrumb" class="drawerBreadcrumb">/content</div>
 
-          <!-- Explorer list -->
           <div id="drawerList" class="drawerList">
             <div class="muted small">Loading…</div>
           </div>
@@ -98,15 +98,37 @@
       <!-- Overlay -->
       <div id="overlay" class="overlay" hidden></div>
 
+      <!-- Side Panels -->
+      <div class="side left">
+        <div class="sideBox">
+          <div class="sideTitle">SYSTEM</div>
+          <div class="sideText">ONLINE</div>
+        </div>
+      </div>
+
+      <div class="side right">
+        <div class="sideBox">
+          <div class="sideTitle">ACCESS</div>
+          <div class="sideText">GRANTED</div>
+        </div>
+      </div>
+
       <!-- =========================
            Main
            ========================= -->
       <main class="main">
         <header class="topbar">
-
           <button id="drawerOpen" class="iconBtn" type="button" aria-label="Open menu">
             ☰
           </button>
+
+          <div class="center-system">
+            <a href="{{ '/map/' | relative_url }}" class="iconBtn" aria-label="Content directory tree">MAP</a>
+          </div>
+
+          <div class="center-system">
+            <a href="{{ '/' | relative_url }}" class="hacker-btn" aria-label="Go to Home">{{ site.title }}</a>
+          </div>
 
           <div class="topbar__right">
             <a class="iconBtn" href="https://github.com/sudoxs" target="_blank" rel="noopener noreferrer">GitHub</a>
@@ -119,14 +141,14 @@
         </section>
 
         <footer class="pageFooter">
-          <span class="muted small">© sudoxs</span>
+          <span class="muted small">© {{ site.title }}</span>
         </footer>
       </main>
     </div>
 
     <!-- =========================
-         Scripts
+         Scripts (robust under any base)
          ========================= -->
-    <script src="assets/js/site.js" defer></script>
+    <script src="{{ '/assets/js/site.js' | relative_url }}" defer></script>
   </body>
 </html>
