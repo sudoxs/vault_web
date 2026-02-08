@@ -18,17 +18,17 @@
          ========================= -->
     {% assign _base = site.baseurl %}
     {% if _base == "" and site.github and site.github.repository_name %}
-      {% assign _base = "/" | append: site.github.repository_name %}
+    {% assign _base = "/" | append: site.github.repository_name %}
     {% endif %}
     <meta name="site-base" content="{{ _base }}" />
-
     <!-- Keep <base> for plain relative links -->
-    <!-- <base href="{% if _base == "" %}/{% else %}{{ _base }}/{% endif %}"> -->
+    <base href="{% if _base == "" %}/{% else %}{{ _base }}/{% endif %}">
 
     <!-- =========================
          Styles (robust under any base)
          ========================= -->
     <link rel="stylesheet" href="{{ '/assets/css/site.css' | relative_url }}" />
+
   </head>
 
   <body>
@@ -150,5 +150,6 @@
          Scripts (robust under any base)
          ========================= -->
     <script src="{{ '/assets/js/site.js' | relative_url }}" defer></script>
+
   </body>
 </html>

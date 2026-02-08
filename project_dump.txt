@@ -1,5 +1,5 @@
 ===== PROJECT DUMP =====
-Generated at: Sun Feb  8 11:54:49 AM EST 2026
+Generated at: Sun Feb  8 12:18:25 PM EST 2026
 
 
 ==================================================
@@ -1540,28 +1540,47 @@ permalink: /assets/search_index.json
 FILE: ./_config.yml
 ==================================================
 
-# =========================
-# Jekyll Config
-# =========================
+# # =========================
+# # Jekyll Config
+# # =========================
+
+# title: sudoxs
+# description: "Security portfolio & knowledge vault"
+# markdown: kramdown
+
+# # We keep baseurl empty to avoid local-vs-GitHub mismatch.
+# # We will auto-detect repo base path on GitHub Pages using site.github variables in templates.
+# baseurl: ""
+
+# # Keep it simple (GitHub Pages compatible)
+# plugins: []
+
+# # Optional: exclude things you don't want published
+# exclude:
+#   - README.md
+#   - .gitignore
+#   - Gemfile
+#   - Gemfile.lock
+#   - vendor
+
 
 title: sudoxs
 description: "Security portfolio & knowledge vault"
 markdown: kramdown
 
-# We keep baseurl empty to avoid local-vs-GitHub mismatch.
-# We will auto-detect repo base path on GitHub Pages using site.github variables in templates.
-baseurl: ""
+url: "https://sudoxs.github.io"
+baseurl: "/sudoxs_web"
 
-# Keep it simple (GitHub Pages compatible)
 plugins: []
 
-# Optional: exclude things you don't want published
 exclude:
   - README.md
   - .gitignore
   - Gemfile
   - Gemfile.lock
   - vendor
+  - _site
+  - .jekyll-cache
 
 ==================================================
 FILE: ./content/git/GitHub.md
@@ -1985,7 +2004,7 @@ echo "===== END OF PROJECT =====" >> "$OUTPUT"
 FILE: ./.git/COMMIT_EDITMSG
 ==================================================
 
-map page
+linking fixed
 
 ==================================================
 FILE: ./.git/config
@@ -3038,6 +3057,7 @@ d827f409f5bbdf25acdbe152488518f041abcf96 665eeff43f6ffdc56304430257658bb45879468
 2e8d760a5524bac9184fa5a52b561eb11f05206b 82254b262c65386554cd1f78a80c21db8bab7174 keyaruga <kachigaru369@yahoo.com> 1769573612 -0500	commit: fixed searching
 82254b262c65386554cd1f78a80c21db8bab7174 d3490cc820122dc3982e79681096f95ea49c444d keyaruga <kachigaru369@yahoo.com> 1769581934 -0500	commit: fixed css
 d3490cc820122dc3982e79681096f95ea49c444d d7cec834892fed6858952978fbe52a8041ddc166 keyaruga <kachigaru369@yahoo.com> 1770569565 -0500	commit: map page
+d7cec834892fed6858952978fbe52a8041ddc166 a859586ba6b7fda9b9aa61577f26e202112b0bab keyaruga <kachigaru369@yahoo.com> 1770570023 -0500	commit: linking fixed
 
 ==================================================
 FILE: ./.git/logs/refs/heads/main
@@ -3050,6 +3070,7 @@ d827f409f5bbdf25acdbe152488518f041abcf96 665eeff43f6ffdc56304430257658bb45879468
 2e8d760a5524bac9184fa5a52b561eb11f05206b 82254b262c65386554cd1f78a80c21db8bab7174 keyaruga <kachigaru369@yahoo.com> 1769573612 -0500	commit: fixed searching
 82254b262c65386554cd1f78a80c21db8bab7174 d3490cc820122dc3982e79681096f95ea49c444d keyaruga <kachigaru369@yahoo.com> 1769581934 -0500	commit: fixed css
 d3490cc820122dc3982e79681096f95ea49c444d d7cec834892fed6858952978fbe52a8041ddc166 keyaruga <kachigaru369@yahoo.com> 1770569565 -0500	commit: map page
+d7cec834892fed6858952978fbe52a8041ddc166 a859586ba6b7fda9b9aa61577f26e202112b0bab keyaruga <kachigaru369@yahoo.com> 1770570023 -0500	commit: linking fixed
 
 ==================================================
 FILE: ./.git/logs/refs/remotes/origin/main
@@ -3061,6 +3082,7 @@ d827f409f5bbdf25acdbe152488518f041abcf96 665eeff43f6ffdc56304430257658bb45879468
 2e8d760a5524bac9184fa5a52b561eb11f05206b 82254b262c65386554cd1f78a80c21db8bab7174 keyaruga <kachigaru369@yahoo.com> 1769573626 -0500	update by push
 82254b262c65386554cd1f78a80c21db8bab7174 d3490cc820122dc3982e79681096f95ea49c444d keyaruga <kachigaru369@yahoo.com> 1769581957 -0500	update by push
 d3490cc820122dc3982e79681096f95ea49c444d d7cec834892fed6858952978fbe52a8041ddc166 keyaruga <kachigaru369@yahoo.com> 1770569590 -0500	update by push
+d7cec834892fed6858952978fbe52a8041ddc166 a859586ba6b7fda9b9aa61577f26e202112b0bab keyaruga <kachigaru369@yahoo.com> 1770570040 -0500	update by push
 
 ==================================================
 FILE: ./.git/objects/05/905432e259b83cd7b925dc5ed88a461bca8288
@@ -3076,6 +3098,12 @@ FILE: ./.git/objects/07/6794f2f50a2dd42ec82714ebb82a250f51302b
 
 ==================================================
 FILE: ./.git/objects/07/af9e8d2c1a18c7d091820337feb28b7d98f0fb
+==================================================
+
+[BINARY FILE - SKIPPED]
+
+==================================================
+FILE: ./.git/objects/0d/562c6464cfac205ad999beba352c28863fc9bb
 ==================================================
 
 [BINARY FILE - SKIPPED]
@@ -3100,6 +3128,12 @@ FILE: ./.git/objects/15/b0f32ae0c315b3769b3df720ea837bfb754cf9
 
 ==================================================
 FILE: ./.git/objects/16/98d8380139d09f11eccd9246d605344f001cc6
+==================================================
+
+[BINARY FILE - SKIPPED]
+
+==================================================
+FILE: ./.git/objects/1a/0007900f79fc1461da13f924a3204b352633e6
 ==================================================
 
 [BINARY FILE - SKIPPED]
@@ -3333,6 +3367,12 @@ FILE: ./.git/objects/a6/bb82e5a96cf63fb3d29afee5282989a890f895
 [BINARY FILE - SKIPPED]
 
 ==================================================
+FILE: ./.git/objects/a8/59586ba6b7fda9b9aa61577f26e202112b0bab
+==================================================
+
+[BINARY FILE - SKIPPED]
+
+==================================================
 FILE: ./.git/objects/ac/075b3b2231833b94e4bbe7fb66fc5e079cad2d
 ==================================================
 
@@ -3387,7 +3427,19 @@ FILE: ./.git/objects/c1/5a3987fba354e7accbf0b4a4954bf40b337ff4
 [BINARY FILE - SKIPPED]
 
 ==================================================
+FILE: ./.git/objects/ca/d446cd4256101c9d9c1c44596c2a88d5eaf9b5
+==================================================
+
+[BINARY FILE - SKIPPED]
+
+==================================================
 FILE: ./.git/objects/ce/62a9ac3457477c7c3e4bacd37b70a56d744bbf
+==================================================
+
+[BINARY FILE - SKIPPED]
+
+==================================================
+FILE: ./.git/objects/ce/bd0d8d5140fc6d785b787284aef4e7b825bafd
 ==================================================
 
 [BINARY FILE - SKIPPED]
@@ -3429,6 +3481,12 @@ FILE: ./.git/objects/df/3ba9ab9bfd848fc5a56c931f9bc9e09265a7e7
 [BINARY FILE - SKIPPED]
 
 ==================================================
+FILE: ./.git/objects/e6/21e9143c0de58bf22bc123ef33680b049f45c3
+==================================================
+
+[BINARY FILE - SKIPPED]
+
+==================================================
 FILE: ./.git/objects/ee/6f4bf3d495e6be58511536cc455afcc342e6a7
 ==================================================
 
@@ -3465,6 +3523,12 @@ FILE: ./.git/objects/f3/39c53deb723e13335f0a8f9877b333309e04a3
 [BINARY FILE - SKIPPED]
 
 ==================================================
+FILE: ./.git/objects/f7/89e68b75f0dc2ed31c164f4df20cef7e7d00b9
+==================================================
+
+[BINARY FILE - SKIPPED]
+
+==================================================
 FILE: ./.git/objects/fc/3fbe5982496654c5d105b17873a31906532564
 ==================================================
 
@@ -3489,16 +3553,22 @@ FILE: ./.git/objects/ff/e8dce48cc7109f8e328220e0d2cf9bdd80713c
 [BINARY FILE - SKIPPED]
 
 ==================================================
+FILE: ./.git/objects/ff/f804afd8b6d44e553dda28b5061aff45d98d12
+==================================================
+
+[BINARY FILE - SKIPPED]
+
+==================================================
 FILE: ./.git/refs/heads/main
 ==================================================
 
-d7cec834892fed6858952978fbe52a8041ddc166
+a859586ba6b7fda9b9aa61577f26e202112b0bab
 
 ==================================================
 FILE: ./.git/refs/remotes/origin/main
 ==================================================
 
-d7cec834892fed6858952978fbe52a8041ddc166
+a859586ba6b7fda9b9aa61577f26e202112b0bab
 
 ==================================================
 FILE: ./index.html
@@ -3606,10 +3676,9 @@ FILE: ./_layouts/default.html
          ========================= -->
     {% assign _base = site.baseurl %}
     {% if _base == "" and site.github and site.github.repository_name %}
-      {% assign _base = "/" | append: site.github.repository_name %}
+    {% assign _base = "/" | append: site.github.repository_name %}
     {% endif %}
     <meta name="site-base" content="{{ _base }}" />
-
     <!-- Keep <base> for plain relative links -->
     <base href="{% if _base == "" %}/{% else %}{{ _base }}/{% endif %}">
 
@@ -3617,6 +3686,7 @@ FILE: ./_layouts/default.html
          Styles (robust under any base)
          ========================= -->
     <link rel="stylesheet" href="{{ '/assets/css/site.css' | relative_url }}" />
+
   </head>
 
   <body>
@@ -3738,6 +3808,7 @@ FILE: ./_layouts/default.html
          Scripts (robust under any base)
          ========================= -->
     <script src="{{ '/assets/js/site.js' | relative_url }}" defer></script>
+
   </body>
 </html>
 
