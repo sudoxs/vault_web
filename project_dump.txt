@@ -1,0 +1,3750 @@
+===== PROJECT DUMP =====
+Generated at: Sun Feb  8 11:54:49 AM EST 2026
+
+
+==================================================
+FILE: ./404.html
+==================================================
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>404</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: #090a0f;
+      font-family: "Lato", sans-serif;
+    }
+
+    /* =========================
+       Star Background
+       ========================= */
+    .container {
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+      overflow: hidden;
+    }
+
+    #stars, #stars2, #stars3 {
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    /* ---- STARS 1 ---- */
+    #stars {
+      width: 1px;
+      height: 1px;
+      background: transparent;
+      box-shadow:
+        501px 811px #fff, 1450px 1324px #fff, 404px 975px #fff,
+        732px 1420px #fff, 1290px 340px #fff, 1678px 1820px #fff;
+      animation: animStar 50s linear infinite;
+    }
+    #stars::after {
+      content: "";
+      position: absolute;
+      top: 2000px;
+      width: 1px;
+      height: 1px;
+      box-shadow: inherit;
+    }
+
+    /* ---- STARS 2 ---- */
+    #stars2 {
+      width: 2px;
+      height: 2px;
+      background: transparent;
+      box-shadow:
+        1925px 1320px #fff, 693px 1778px #fff, 939px 1922px #fff,
+        120px 640px #fff, 1530px 980px #fff, 845px 420px #fff;
+      animation: animStar 100s linear infinite;
+    }
+    #stars2::after {
+      content: "";
+      position: absolute;
+      top: 2000px;
+      width: 2px;
+      height: 2px;
+      box-shadow: inherit;
+    }
+
+    /* ---- STARS 3 ---- */
+    #stars3 {
+      width: 3px;
+      height: 3px;
+      background: transparent;
+      box-shadow:
+        200px 981px #fff, 1731px 521px #fff, 1888px 1547px #fff,
+        1024px 256px #fff, 620px 1440px #fff, 1600px 720px #fff;
+      animation: animStar 150s linear infinite;
+    }
+    #stars3::after {
+      content: "";
+      position: absolute;
+      top: 2000px;
+      width: 3px;
+      height: 3px;
+      box-shadow: inherit;
+    }
+
+    @keyframes animStar {
+      from { transform: translateY(0); }
+      to { transform: translateY(-2000px); }
+    }
+
+    /* =========================
+       Center Content
+       ========================= */
+    .center {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+    }
+
+    #title {
+      font-size: 72px;
+      letter-spacing: 12px;
+      color: #fff;
+      margin-bottom: 20px;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: introFadeUp 1.2s ease-out forwards;
+    }
+
+    #title span {
+      background: linear-gradient(white, #38495a);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    @keyframes introFadeUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* =========================
+       Glitch Text
+       ========================= */
+    .glitch {
+      position: relative;
+      font-size: 24px;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: 5px;
+      animation: shift 1s ease-in-out infinite alternate;
+    }
+
+    .glitch::before,
+    .glitch::after {
+      content: attr(data-glitch);
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0.8;
+    }
+
+    .glitch::before {
+      color: #8b00ff;
+      animation: glitch 0.4s infinite;
+      z-index: -1;
+    }
+
+    .glitch::after {
+      color: #00e571;
+      animation: glitch 0.4s infinite reverse;
+      z-index: -2;
+    }
+
+    @keyframes glitch {
+      0% { transform: translate(0); }
+      20% { transform: translate(-3px, 3px); }
+      40% { transform: translate(-3px, -3px); }
+      60% { transform: translate(3px, 3px); }
+      80% { transform: translate(3px, -3px); }
+      100% { transform: translate(0); }
+    }
+
+    @keyframes shift {
+      0%,100% { transform: skewX(0deg); }
+      50% { transform: skewX(-10deg); }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container" aria-hidden="true">
+    <div id="stars"></div>
+    <div id="stars2"></div>
+    <div id="stars3"></div>
+  </div>
+
+  <div class="center">
+    <div id="title"><span>404</span></div>
+    <div class="glitch" data-glitch="NOT FOUND">NOT FOUND</div>
+  </div>
+</body>
+</html>
+
+==================================================
+FILE: ./assets/css/site.css
+==================================================
+
+/* =========================
+   Base Theme
+   ========================= */
+:root{
+  --bg: #0b0f17;
+  --card: rgba(255,255,255,0.04);
+  --card2: rgba(255,255,255,0.06);
+  --text: #e6eaf2;
+  --muted: #a9b2c3;
+  --border: rgba(255,255,255,0.10);
+  --accent: #7c5cff;
+  --accent2: #00dcff;
+
+  --r: 16px;
+  --shadow: 0 20px 60px rgba(0,0,0,0.45);
+}
+
+*{ box-sizing: border-box; }
+html,body{ 
+  height: 100%;
+  margin: 0;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+ }
+body{
+  margin:0;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial;
+  color: var(--text);
+  background: radial-gradient(1200px 600px at 20% 0%, rgba(124,92,255,0.18), transparent 60%),
+              radial-gradient(900px 500px at 80% 10%, rgba(0,220,255,0.12), transparent 55%),
+              /* url("/assets/img/bg.jpg"), */
+              var(--bg);
+
+              background-repeat: no-repeat, no-repeat, no-repeat;
+              background-attachment: fixed, fixed, fixed;
+              background-size: cover, cover, cover;
+              /* background-position: center; */
+              /* background-blend-mode: screen; */
+
+            }
+
+/* =========================
+   Layout
+   ========================= */
+.app{
+  display:grid;
+  grid-template-columns: 1fr;
+  min-height:100%;
+}
+.main{
+  min-height:100vh;
+}
+.content{
+  padding: 18px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+@media (min-width: 980px){
+  .content{ padding: 26px; }
+}
+
+/* =========================
+   Topbar
+   ========================= */
+.topbar{
+  position: sticky;
+  top:0;
+  z-index: 10;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--border);
+  background: rgba(11,15,23,0.72);
+  backdrop-filter: blur(12px);
+}
+.topbar__right{ display:flex; gap:10px; }
+
+
+
+
+/* =========================
+   Drawer / Overlay
+   ========================= */
+.drawer{
+  position: fixed;
+  inset: 0 auto 0 0;
+  width: 320px;
+  max-width: 88vw;
+  transform: translateX(-110%);
+  transition: transform 220ms ease;
+  z-index: 30;
+
+  border-right: 1px solid var(--border);
+  background: rgba(10,14,21,0.92);
+  backdrop-filter: blur(16px);
+  box-shadow: var(--shadow);
+
+  display:flex;
+  flex-direction:column;
+}
+.drawer.isOpen{ transform: translateX(0); }
+
+.overlay{
+  position: fixed;
+  inset:0;
+  z-index: 20;
+  background: rgba(0,0,0,0.55);
+}
+
+.drawer__header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding: 14px 14px 10px;
+  border-bottom: 1px solid var(--border);
+}
+.drawer__search{
+  padding: 12px 14px 6px;
+  border-bottom: 1px solid var(--border);
+}
+.drawer__nav{
+  padding: 12px 14px;
+  overflow:auto;
+  flex: 1;
+}
+.drawer__footer{
+  padding: 12px 14px;
+  border-top: 1px solid var(--border);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+/* =========================
+   Brand
+   ========================= */
+.brand{
+  display:flex;
+  gap:10px;
+  align-items:center;
+}
+.brand__dot{
+  width: 12px; height: 12px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  box-shadow: 0 0 22px rgba(124,92,255,0.55);
+}
+.brand__name{ font-weight: 700; letter-spacing: 0.2px; }
+.brand__tag{ font-size: 12px; color: var(--muted); margin-top: 2px; }
+
+/* =========================
+   Typography
+   ========================= */
+.h1{ font-size: 42px; line-height: 1.1; margin: 10px 0 10px; }
+.h2{ font-size: 18px; font-weight: 700; margin: 0 0 6px; }
+.lead{ color: var(--muted); font-size: 16px; max-width: 70ch; }
+.small{ font-size: 12px; }
+.muted{ color: var(--muted); }
+code{
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.10);
+  padding: 2px 6px;
+  border-radius: 10px;
+}
+
+/* =========================
+   Buttons / Inputs
+   ========================= */
+.iconBtn{
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,0.04);
+  color: var(--text);
+  padding: 10px 12px;
+  border-radius: 12px;
+  cursor:pointer;
+}
+.iconBtn:hover{ background: rgba(255,255,255,0.06); }
+
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  padding: 10px 14px;
+  border-radius: 14px;
+  border: 1px solid rgba(124,92,255,0.45);
+  background: rgba(124,92,255,0.12);
+  color: var(--text);
+  text-decoration:none;
+}
+.btn:hover{ background: rgba(124,92,255,0.18); }
+.btn--ghost{
+  border-color: var(--border);
+  background: rgba(255,255,255,0.04);
+}
+.pill{
+  padding: 8px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,0.04);
+  color: var(--text);
+  text-decoration:none;
+}
+.pill:hover{ background: rgba(255,255,255,0.06); }
+
+.input{
+  width:100%;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,0.04);
+  color: var(--text);
+  outline:none;
+}
+.input:focus{
+  border-color: rgba(124,92,255,0.6);
+  box-shadow: 0 0 0 4px rgba(124,92,255,0.14);
+}
+
+/* =========================
+   Nav Tree
+   ========================= */
+.navTitle{
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 10px;
+}
+.navTree{ display:flex; flex-direction:column; gap:6px; }
+.navItem{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  padding: 10px 10px;
+  border-radius: 12px;
+  border: 1px solid transparent;
+  background: rgba(255,255,255,0.03);
+  cursor:pointer;
+}
+.navItem:hover{
+  border-color: rgba(255,255,255,0.10);
+  background: rgba(255,255,255,0.05);
+}
+.navItem__name{ font-size: 14px; }
+.navItem__meta{ font-size: 12px; color: var(--muted); }
+
+/* =========================
+   Hero
+   ========================= */
+.hero{
+  position: relative;
+  border: 1px solid var(--border);
+  border-radius: calc(var(--r) + 6px);
+  overflow:hidden;
+  background: rgba(255,255,255,0.02);
+}
+.hero__bg{
+  position:absolute; inset:-1px;
+  background:
+    radial-gradient(800px 320px at 20% 0%, rgba(124,92,255,0.25), transparent 55%),
+    radial-gradient(700px 260px at 80% 20%, rgba(0,220,255,0.16), transparent 60%);
+  filter: blur(0px);
+}
+.hero__inner{
+  position: relative;
+  padding: 22px;
+}
+.badge{
+  display:inline-flex;
+  gap:8px;
+  align-items:center;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,0.04);
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.ctaRow{ display:flex; gap:10px; margin-top: 14px; flex-wrap: wrap; }
+
+.cards{
+  margin-top: 18px;
+  display:grid;
+  gap: 10px;
+  grid-template-columns: 1fr;
+}
+@media(min-width: 900px){
+  .cards{ grid-template-columns: repeat(3, 1fr); }
+}
+.card{
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,0.03);
+  border-radius: var(--r);
+  padding: 14px;
+}
+.card__title{ font-weight: 700; margin-bottom: 6px; }
+.card__text{ color: var(--muted); font-size: 14px; }
+
+/* =========================
+   Panel / List
+   ========================= */
+.panel{
+  margin-top: 16px;
+  border: 1px solid var(--border);
+  border-radius: calc(var(--r) + 6px);
+  background: rgba(255,255,255,0.03);
+  overflow:hidden;
+}
+.panel__head{
+  padding: 14px;
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:14px;
+  border-bottom: 1px solid var(--border);
+  flex-wrap: wrap;
+}
+.crumbs{ display:flex; align-items:center; gap:8px; }
+.breadcrumb{
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New";
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.list{
+  padding: 10px;
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+.row{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  padding: 10px 10px;
+  border: 1px solid transparent;
+  border-radius: 14px;
+  background: rgba(255,255,255,0.03);
+}
+.row:hover{
+  border-color: rgba(255,255,255,0.10);
+  background: rgba(255,255,255,0.05);
+}
+.row__left{ display:flex; gap:10px; align-items:center; min-width: 0; }
+.icon{
+  width: 30px; height: 30px;
+  display:grid; place-items:center;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.04);
+  flex: 0 0 auto;
+}
+.row__name{
+  white-space: nowrap;
+  overflow:hidden;
+  text-overflow: ellipsis;
+}
+.row__right{ display:flex; gap:10px; align-items:center; }
+.link{
+  color: var(--text);
+  text-decoration:none;
+  border-bottom: 1px dashed rgba(124,92,255,0.5);
+}
+.link:hover{ border-bottom-color: rgba(124,92,255,0.9); }
+
+/* =========================
+   Footer
+   ========================= */
+.pageFooter{
+  padding: 20px 18px 30px;
+  text-align:center;
+}
+
+
+
+
+/* =========================
+   Drawer Explorer
+   ========================= */
+.drawerBreadcrumb{
+  margin: 8px 0 12px;
+  padding: 8px 10px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,0.03);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New";
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.drawerList{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+
+.drawerItem{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  padding: 10px 10px;
+  border-radius: 14px;
+  border: 1px solid transparent;
+  background: rgba(255,255,255,0.03);
+}
+
+.drawerItem:hover{
+  border-color: rgba(255,255,255,0.10);
+  background: rgba(255,255,255,0.05);
+}
+
+.drawerItem__left{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  min-width: 0;
+}
+
+.drawerItem__name{
+  white-space: nowrap;
+  overflow:hidden;
+  text-overflow: ellipsis;
+}
+
+.drawerItem__btn{
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,0.04);
+  color: var(--text);
+  padding: 8px 10px;
+  border-radius: 12px;
+  cursor:pointer;
+}
+
+.drawerItem__btn:hover{
+  background: rgba(255,255,255,0.06);
+}
+
+.drawerItem.isActive{
+  border-color: rgba(124,92,255,0.55);
+  background: rgba(124,92,255,0.10);
+}
+
+
+
+
+/* =========================
+   Loading Screen
+   ========================= */
+#loadingScreen{
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+
+  background: var(--bg, #0b0f17);
+  color: var(--text, #e6eaf2);
+
+  opacity: 1;
+  transition: opacity 0.35s ease;
+}
+
+#loadingScreen.is-hidden{
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Optional: if you want it to fully "go away" after fade */
+#loadingScreen.is-gone{
+  display: none;
+}
+
+/* Spinner */
+#loadingScreen .loader{
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 3px solid rgba(255,255,255,0.18);
+  border-top-color: rgba(255,255,255,0.85);
+  animation: sudoxsSpin 0.9s linear infinite;
+}
+
+#loadingScreen .loadingText{
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  opacity: 0.85;
+}
+
+@keyframes sudoxsSpin{
+  to{ transform: rotate(360deg); }
+}
+
+
+
+
+/* Center wrapper (overlay in the middle of the page) */
+.topbar .center-system{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  pointer-events: none;
+}
+
+.topbar .center-system a{
+  pointer-events: auto;
+}
+
+
+
+.hacker-btn {
+  pointer-events: auto;
+  position: relative;
+  z-index: 1;
+
+  padding: 18px 20px;
+  background: rgba(20, 20, 60, 0.9);
+  color: #b3b3ff;
+  border: 2px solid #4b4bff;
+  border-radius: 12px;
+
+  font-size: 18px;
+  font-family: "Courier New", monospace;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+
+  cursor: pointer;
+  overflow: hidden;
+
+  text-decoration: none;
+  display: inline-block;
+
+  transition: all 0.3s ease;
+  box-shadow:
+    0 0 15px rgba(75, 75, 255, 0.3),
+    inset 0 0 10px rgba(75, 75, 255, 0.2);
+}
+
+/* Terminal swipe effect */
+.hacker-btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(75, 75, 255, 0.3),
+    transparent
+  );
+  animation: terminal-swipe 3s infinite linear;
+}
+
+.hacker-btn:hover::before {
+  animation: terminal-swipe 1s infinite linear;
+}
+
+.hacker-btn:hover {
+  color: #ffffff;
+  box-shadow:
+    0 0 25px rgba(75, 75, 255, 0.7),
+    0 0 40px rgba(75, 75, 255, 0.4);
+  transform: scale(1.03);
+}
+
+/* Cursor blink */
+.hacker-btn::after {
+  content: "_";
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #00ff99;
+  font-size: 20px;
+  animation: cursor-blink 0.8s infinite step-end;
+}
+
+/* Animations */
+@keyframes data-stream {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-10px); }
+}
+
+@keyframes terminal-swipe {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+@keyframes cursor-blink {
+  0% { opacity: 1; }
+  50% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+
+
+
+
+
+
+
+
+/* =========================
+   Content File Tree (ASCII)
+   ========================= */
+.file-tree {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.file-tree ul {
+  margin: 0;
+  padding-left: 1.25rem;
+  list-style: none;
+  position: relative;
+}
+
+.file-tree li {
+  position: relative;
+  padding: 2px 0;
+  white-space: nowrap;
+}
+
+/* vertical guide line for nested ULs */
+.file-tree li:not(:last-child) > ul::before {
+  content: "";
+  position: absolute;
+  left: 0.25rem;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: rgba(255,255,255,0.18);
+}
+
+/* branch symbols */
+.file-tree li::before {
+  content: "├── ";
+  color: rgba(255,255,255,0.55);
+}
+
+.file-tree li:last-child::before {
+  content: "└── ";
+}
+
+/* clickable folder row */
+.file-tree .tree-row {
+  display: inline-flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.file-tree .tree-toggle {
+  appearance: none;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.04);
+  color: rgba(255,255,255,0.85);
+  border-radius: 8px;
+  padding: 0 8px;
+  height: 24px;
+  cursor: pointer;
+}
+
+.file-tree .tree-toggle:hover {
+  background: rgba(255,255,255,0.07);
+}
+
+.file-tree a.tree-link {
+  color: var(--text, #e6eaf2);
+  text-decoration: none;
+  border-bottom: 1px dotted rgba(255,255,255,0.25);
+}
+
+.file-tree a.tree-link:hover {
+  border-bottom-color: rgba(255,255,255,0.65);
+}
+
+.file-tree .muted {
+  color: rgba(255,255,255,0.6);
+}
+
+
+
+.main{
+  position: relative;
+  z-index: 2;
+}
+
+
+
+/* =========================
+   Side Panels
+   ========================= */
+.side{
+  position: fixed;
+  top: 96px;          
+  width: 220px;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.side.left{ left: 12px; }
+.side.right{ right: 12px; }
+
+.sideBox{
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,0.03);
+  backdrop-filter: blur(6px);
+  border-radius: 14px;
+  padding: 14px;
+  font-family: ui-monospace, monospace;
+  text-align: center;
+}
+
+.sideTitle{
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+
+.sideText{
+  font-size: 14px;
+  color: var(--text);
+}
+
+/* موبایل: مخفی */
+@media (max-width: 900px){
+  .side{ display: none; }
+}
+
+
+
+/* =========================
+   Ambient Side Motion
+   ========================= */
+body::before,
+body::after{
+  content:"";
+  position: fixed;
+  top:0;
+  bottom:0;
+  width: 260px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+body::before{
+  left:0;
+  background: radial-gradient(
+    300px 80% at left center,
+    rgba(124,92,255,0.10),
+    transparent 70%
+  );
+  animation: sideDriftL 22s ease-in-out infinite alternate;
+}
+
+body::after{
+  right:0;
+  background: radial-gradient(
+    300px 80% at right center,
+    rgba(0,220,255,0.08),
+    transparent 70%
+  );
+  animation: sideDriftR 26s ease-in-out infinite alternate;
+}
+
+@keyframes sideDriftL{
+  from{ transform: translateY(0); }
+  to{ transform: translateY(-40px); }
+}
+
+@keyframes sideDriftR{
+  from{ transform: translateY(0); }
+  to{ transform: translateY(-60px); }
+}
+
+==================================================
+FILE: ./assets/js/site.js
+==================================================
+
+// =========================
+// sudoxs_web - site.js
+// - English-only comments by request
+// - Safe DOM updates (no innerHTML for untrusted strings)
+// =========================
+
+// =========================
+// Base Path Helpers
+// =========================
+function getBasePath() {
+  const meta = document.querySelector('meta[name="site-base"]');
+  const base = meta ? meta.getAttribute("content") : "";
+  return base || ""; // "" or "/repo"
+}
+
+function withBase(urlPath) {
+  const base = getBasePath();
+  if (!urlPath) return base || "";
+
+  // If already prefixed with base (avoid double prefix)
+  if (base && urlPath.startsWith(base + "/")) return urlPath;
+
+  if (!urlPath.startsWith("/")) return (base ? base + "/" : "/") + urlPath;
+  return (base || "") + urlPath;
+}
+
+// =========================
+// Drawer UI
+// =========================
+const drawer = document.getElementById("drawer");
+const overlay = document.getElementById("overlay");
+const btnOpen = document.getElementById("drawerOpen");
+const btnClose = document.getElementById("drawerClose");
+
+function openDrawer() {
+  if (!drawer || !overlay) return;
+  drawer.classList.add("isOpen");
+  drawer.setAttribute("aria-hidden", "false");
+  overlay.hidden = false;
+}
+
+function closeDrawer() {
+  if (!drawer || !overlay) return;
+  drawer.classList.remove("isOpen");
+  drawer.setAttribute("aria-hidden", "true");
+  overlay.hidden = true;
+}
+
+btnOpen?.addEventListener("click", openDrawer);
+btnClose?.addEventListener("click", closeDrawer);
+overlay?.addEventListener("click", closeDrawer);
+
+document.addEventListener("keydown", (e) => {
+  // Only close when drawer is open
+  if (e.key === "Escape" && drawer?.classList.contains("isOpen")) closeDrawer();
+});
+
+// =========================
+// State
+// =========================
+let INDEX = null;
+let CURRENT_FOLDER = "/content";
+let TREE = null;
+
+// =========================
+// Data Load
+// =========================
+async function loadIndex() {
+  const res = await fetch(withBase("/assets/search_index.json"), { cache: "no-store" });
+  if (!res.ok) throw new Error("Failed to load search_index.json");
+  return res.json();
+}
+
+// =========================
+// Tree Helpers
+// =========================
+function splitPath(p) {
+  return (p || "").replace(/^\/+/, "").split("/").filter(Boolean);
+}
+
+function isUnderContent(pathArr) {
+  return pathArr.length > 0 && pathArr[0] === "content";
+}
+
+function buildTree(items) {
+  const root = { name: "/", children: new Map(), items: [] };
+
+  for (const it of items) {
+    const ref = it.url || it.path || "";
+    const parts = splitPath(ref);
+    if (!isUnderContent(parts)) continue;
+
+    let node = root;
+    for (let i = 0; i < parts.length; i++) {
+      const seg = parts[i];
+      const isLast = i === parts.length - 1;
+
+      if (isLast) {
+        node.items.push({
+          kind: it.type, // "file" | "page"
+          name: it.type === "page" ? (it.title || seg) : (it.name || seg),
+          url: it.url,
+          path: it.path,
+          fullPath: "/" + parts.join("/")
+        });
+      } else {
+        if (!node.children.has(seg)) {
+          node.children.set(seg, { name: seg, children: new Map(), items: [] });
+        }
+        node = node.children.get(seg);
+      }
+    }
+  }
+
+  return root;
+}
+
+function findNodeByPath(treeRoot, folderPath) {
+  const parts = splitPath(folderPath);
+  let node = treeRoot;
+
+  for (const seg of parts) {
+    if (!node.children.has(seg)) return null;
+    node = node.children.get(seg);
+  }
+  return node;
+}
+
+// =========================
+// DOM Helpers (safe)
+// =========================
+function el(tag, className) {
+  const x = document.createElement(tag);
+  if (className) x.className = className;
+  return x;
+}
+
+function setDrawerBreadcrumb(text) {
+  const bc = document.getElementById("drawerBreadcrumb");
+  if (!bc) return;
+  bc.textContent = text;
+}
+
+function getDrawerList() {
+  return document.getElementById("drawerList");
+}
+
+// =========================
+// Drawer Explorer Rendering
+// =========================
+function renderFolder(folderPath) {
+  CURRENT_FOLDER = folderPath;
+
+  const list = getDrawerList();
+  if (!list) return;
+
+  list.textContent = "";
+
+  const node = findNodeByPath(TREE, folderPath);
+  if (!node) {
+    const msg = el("div", "muted small");
+    msg.textContent = "Folder not found in index.";
+    list.appendChild(msg);
+    setDrawerBreadcrumb(folderPath);
+    return;
+  }
+
+  setDrawerBreadcrumb(folderPath);
+
+  // Back item (except /content)
+  if (folderPath !== "/content") {
+    const backRow = el("div", "drawerItem");
+    const left = el("div", "drawerItem__left");
+
+    const icon = el("div", "icon");
+    icon.textContent = "↩";
+    const name = el("div", "drawerItem__name");
+    name.textContent = ".. (Back)";
+
+    left.appendChild(icon);
+    left.appendChild(name);
+
+    const btn = el("button", "drawerItem__btn");
+    btn.type = "button";
+    btn.textContent = "Up";
+    btn.addEventListener("click", () => {
+      const parts = splitPath(folderPath);
+      parts.pop();
+      const up = "/" + parts.join("/");
+      renderFolder(up || "/content");
+    });
+
+    backRow.appendChild(left);
+    backRow.appendChild(btn);
+    list.appendChild(backRow);
+  }
+
+  // Folders
+  const folders = [...node.children.values()].sort((a, b) => a.name.localeCompare(b.name));
+  for (const f of folders) {
+    const row = el("div", "drawerItem");
+
+    const left = el("div", "drawerItem__left");
+    const icon = el("div", "icon");
+    icon.textContent = "📁";
+    const name = el("div", "drawerItem__name");
+    name.textContent = f.name;
+
+    left.appendChild(icon);
+    left.appendChild(name);
+
+    const btn = el("button", "drawerItem__btn");
+    btn.type = "button";
+    btn.textContent = "Open";
+    btn.addEventListener("click", () => renderFolder(`${folderPath}/${f.name}`));
+
+    row.appendChild(left);
+    row.appendChild(btn);
+    list.appendChild(row);
+  }
+
+  // Files/pages
+  const items = [...node.items].sort((a, b) => a.name.localeCompare(b.name));
+  for (const it of items) {
+    const row = el("div", "drawerItem");
+
+    const left = el("div", "drawerItem__left");
+    const icon = el("div", "icon");
+    icon.textContent = it.kind === "page" ? "📝" : "📄";
+    const name = el("div", "drawerItem__name");
+    name.textContent = it.name;
+
+    left.appendChild(icon);
+    left.appendChild(name);
+
+    const a = el("a", "link");
+    a.href = withBase(it.url);
+    a.textContent = "Open";
+    a.rel = "noopener";
+    a.addEventListener("click", () => closeDrawer());
+
+    row.appendChild(left);
+    row.appendChild(a);
+    list.appendChild(row);
+  }
+
+  if (folders.length === 0 && items.length === 0) {
+    const msg = el("div", "muted small");
+    msg.textContent = "This folder is empty.";
+    list.appendChild(msg);
+  }
+}
+
+// =========================
+// Content File Tree (ASCII)
+// - Renders full /content directory as nested lists
+// - Files/pages are links
+// - Requires an element: <div id="contentTree" class="file-tree"></div>
+// =========================
+function renderContentTree(mountId = "contentTree", rootPath = "/content") {
+  const mount = document.getElementById(mountId);
+  if (!mount || !TREE) return;
+
+  mount.textContent = "";
+
+  const rootNode = findNodeByPath(TREE, rootPath);
+  if (!rootNode) {
+    const msg = el("div", "muted small");
+    msg.textContent = "Content folder not found in index.";
+    mount.appendChild(msg);
+    return;
+  }
+
+  const ul = el("ul");
+  mount.appendChild(ul);
+  buildNodeList(rootNode, rootPath, ul);
+}
+
+function buildNodeList(node, folderPath, parentUl) {
+  const folders = [...node.children.values()].sort((a, b) => a.name.localeCompare(b.name));
+  const items = [...node.items].sort((a, b) => a.name.localeCompare(b.name));
+
+  // Folders
+  for (const f of folders) {
+    const li = el("li");
+
+    const row = el("span", "tree-row");
+
+    const toggle = el("button", "tree-toggle");
+    toggle.type = "button";
+    toggle.textContent = "Open";
+
+    const label = el("span");
+    label.textContent = `📁 ${f.name}`;
+
+    row.appendChild(toggle);
+    row.appendChild(label);
+    li.appendChild(row);
+
+    const childUl = el("ul");
+    childUl.hidden = true;
+    li.appendChild(childUl);
+
+    const childPath = `${folderPath}/${f.name}`;
+    let isOpen = false;
+
+    toggle.addEventListener("click", () => {
+      isOpen = !isOpen;
+      toggle.textContent = isOpen ? "Close" : "Open";
+      childUl.hidden = !isOpen;
+
+      // Lazy render once
+      if (isOpen && childUl.childNodes.length === 0) {
+        buildNodeList(f, childPath, childUl);
+      }
+    });
+
+    parentUl.appendChild(li);
+  }
+
+  // Files/pages
+  for (const it of items) {
+    const li = el("li");
+
+    const a = el("a", "tree-link");
+    a.href = withBase(it.url);
+    a.rel = "noopener";
+    a.textContent = `${it.kind === "page" ? "📝" : "📄"} ${it.name}`;
+
+    li.appendChild(a);
+    parentUl.appendChild(li);
+  }
+
+  if (folders.length === 0 && items.length === 0) {
+    const li = el("li");
+    li.textContent = "(empty)";
+    parentUl.appendChild(li);
+  }
+}
+
+// =========================
+// Secure Search (results inside drawer)
+// =========================
+function normalize(s) {
+  return (s || "").toLowerCase().trim();
+}
+
+function attachSearch(allItems) {
+  const input = document.getElementById("searchInput");
+  const meta = document.getElementById("searchMeta");
+  const list = getDrawerList();
+  if (!input || !meta || !list) return;
+
+  input.addEventListener("input", () => {
+    const q = normalize(input.value);
+
+    if (!q) {
+      meta.textContent = "";
+      renderFolder(CURRENT_FOLDER);
+      return;
+    }
+
+    const matches = allItems
+      .filter(x => {
+        const where = normalize(`${x.path || ""} ${x.url || ""}`);
+        // Accept both "content/" and "/content/"
+        return where.includes("content/") || where.includes("/content/");
+      })
+      .filter(x => {
+        const title = x.type === "page" ? x.title : x.name;
+        const hay = normalize(`${title || ""} ${x.body || ""} ${x.path || ""} ${x.url || ""}`);
+        return hay.includes(q);
+      })
+      .slice(0, 40);
+
+    meta.textContent = matches.length === 0 ? "No results" : `${matches.length} result(s)`;
+    setDrawerBreadcrumb(`/search: ${q}`);
+
+    list.textContent = "";
+
+    for (const m of matches) {
+      const row = el("div", "drawerItem");
+
+      const left = el("div", "drawerItem__left");
+      const icon = el("div", "icon");
+      icon.textContent = m.type === "page" ? "📝" : "📄";
+
+      const name = el("div", "drawerItem__name");
+      name.textContent = (m.type === "page" ? m.title : m.name) || "Untitled";
+
+      left.appendChild(icon);
+      left.appendChild(name);
+
+      const a = el("a", "link");
+      a.href = withBase(m.url);
+      a.textContent = "Open";
+      a.rel = "noopener";
+      a.addEventListener("click", () => closeDrawer());
+
+      row.appendChild(left);
+      row.appendChild(a);
+      list.appendChild(row);
+    }
+  });
+}
+
+// =========================
+// Boot
+// =========================
+(async function boot() {
+  try {
+    INDEX = await loadIndex();
+
+    const all = [
+      ...(INDEX.pages || []).map(p => ({
+        type: "page",
+        title: p.title,
+        url: p.url,
+        path: p.path,
+        body: p.body
+      })),
+
+      ...(INDEX.files || []).map(f => ({
+        type: "file",
+        name: f.name,
+        url: f.url,
+        path: f.path
+      }))
+    ];
+
+    TREE = buildTree(all);
+    window.__TREE__ = TREE;
+
+    attachSearch(all);
+
+    // Initial view: content root inside drawer
+    renderFolder("/content");
+
+    // Optional: render full content tree if #contentTree exists on page
+    renderContentTree("contentTree", "/content");
+  } catch (e) {
+    console.error(e);
+    const list = getDrawerList();
+    if (list) list.textContent = "Failed to load index.";
+  }
+})();
+
+
+// =========================
+// Loading Screen
+// - Hide on DOM ready (faster UX than window.load)
+// - Fade out smoothly, then optionally remove from layout
+// =========================
+(function initLoadingScreen() {
+  function hideLoader() {
+    const loader = document.getElementById("loadingScreen");
+    if (!loader) return;
+
+    // fade out
+    loader.classList.add("is-hidden");
+    loader.setAttribute("aria-hidden", "true");
+
+    // optional: remove after transition
+    window.setTimeout(() => {
+      loader.classList.add("is-gone");
+    }, 420);
+  }
+
+  // Hide as soon as the DOM is ready (not waiting for images/fonts)
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", hideLoader, { once: true });
+  } else {
+    hideLoader();
+  }
+})();
+
+==================================================
+FILE: ./assets/map.html
+==================================================
+
+---
+layout: default
+title: Map
+permalink: /map/
+---
+
+<h1 class="h2">Vault Map</h1>
+<p class="muted small">Browse /content as a tree.</p>
+
+<div id="contentTree" class="file-tree" aria-label="Content directory tree">
+  <div class="muted small">Loading…</div>
+</div>
+
+==================================================
+FILE: ./assets/search_index.json
+==================================================
+
+---
+permalink: /assets/search_index.json
+---
+
+{%- comment -%}
+  =========================
+  Search/Navigation Index (generated at build-time)
+  - Includes page body text for Markdown pages
+  - Works on GitHub Pages + local jekyll serve
+  =========================
+{%- endcomment -%}
+
+{
+  "generated": {{ site.time | date_to_xmlschema | jsonify }},
+  "pages": [
+    {%- assign pages = site.pages | where_exp:"p","p.url != '/assets/search_index.json'" -%}
+    {%- for p in pages -%}
+      {%- assign excluded = p.exclude_from_nav -%}
+      {%- if excluded != true -%}
+      {
+        "type": "page",
+        "title": {{ p.title | default: p.name | jsonify }},
+        "url": {{ p.url | jsonify }},
+        "path": {{ p.path | jsonify }},
+        "body": {{ p.content | strip_html | strip_newlines | replace: "  ", " " | truncate: 4000 | jsonify }}
+      }{%- unless forloop.last -%},{%- endunless -%}
+      {%- endif -%}
+    {%- endfor -%}
+  ],
+  "files": [
+    {%- assign files = site.static_files | where_exp:"f","f.path contains '/content/'" -%}
+    {%- for f in files -%}
+      {
+        "type": "file",
+        "name": {{ f.name | jsonify }},
+        "url": {{ f.path | jsonify }},
+        "path": {{ f.path | jsonify }}
+      }{%- unless forloop.last -%},{%- endunless -%}
+    {%- endfor -%}
+  ]
+}
+
+==================================================
+FILE: ./_config.yml
+==================================================
+
+# =========================
+# Jekyll Config
+# =========================
+
+title: sudoxs
+description: "Security portfolio & knowledge vault"
+markdown: kramdown
+
+# We keep baseurl empty to avoid local-vs-GitHub mismatch.
+# We will auto-detect repo base path on GitHub Pages using site.github variables in templates.
+baseurl: ""
+
+# Keep it simple (GitHub Pages compatible)
+plugins: []
+
+# Optional: exclude things you don't want published
+exclude:
+  - README.md
+  - .gitignore
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+
+==================================================
+FILE: ./content/git/GitHub.md
+==================================================
+
+---
+title: github
+layout: default
+---
+
+
+بعد از تغییر نام:  
+❌ push / pull خطا می‌ده  
+✔️ باید خودت اصلاحش کنی:
+
+`git remote set-url origin https://github.com/newname/project.git`
+
+---
+
+---
+
+## 0) قانون طلایی قبل از کارهای خطرناک
+
+هر وقت خواستی **حذف/بازنویسی تاریخچه** انجام بدی، اول یک برنچ نجات بساز:
+
+```bash
+git branch backup-$(date +%Y%m%d-%H%M)
+```
+
+این یعنی اگر خراب شد، همیشه یک راه برگشت داری.
+
+---
+
+## 1) دیدن لیست کامیت‌ها (کامل و مرتب)
+
+### لیست ساده و خوانا (پیشنهاد من)
+
+```bash
+git log --oneline --decorate --graph --all
+```
+
+نمونه خروجی (فرضی):
+
+```
+* 9f3a1c2 (HEAD -> main, origin/main) Update resume section
+* 1ab22d0 Add article about WebDAV
+* 7c0d9a1 Add CSS styling
+* 4e11b08 Initial site structure
+```
+
+### دیدن فقط 20 کامیت آخر
+
+```bash
+git log -n 20 --oneline
+```
+
+---
+
+## 2) دیدن اینکه هر کامیت دقیقاً چه تغییراتی داشته
+
+### 2.1) دیدن تغییرات یک کامیت (پچ کامل)
+
+```bash
+git show 1ab22d0
+```
+
+### 2.2) فقط لیست فایل‌های تغییر کرده در یک کامیت
+
+```bash
+git show --name-only 1ab22d0
+```
+
+### 2.3) فقط خلاصه (چند خط) از تغییرات
+
+```bash
+git show --stat 1ab22d0
+```
+
+### 2.4) دیدن اختلاف بین دو کامیت (بازه)
+
+مثلاً ببین بین `4e11b08` تا `9f3a1c2` چی تغییر کرده:
+
+```bash
+git diff 4e11b08..9f3a1c2
+```
+
+---
+
+## 3) رفتن به یک کامیت قدیمی (بدون از دست دادن چیزی)
+
+### رفتن به کامیت قدیمی (حالت Detached HEAD)
+
+```bash
+git checkout 7c0d9a1
+```
+
+یا (جدیدتر):
+
+```bash
+git switch --detach 7c0d9a1
+```
+
+✅ اینجا “فقط رفتی گذشته رو دیدی”.  
+❗ ولی هنوز روی برنچ نیستی (Detached). اگر اینجا کامیت بزنی، ممکنه بعداً گم بشه.
+
+### 3.1) ساختن برنچ از همون کامیت (راه درست)
+
+وقتی رفتی روی اون کامیت و خواستی از همون‌جا ادامه بدی:
+
+```bash
+git switch -c fix-from-old
+```
+
+الان هر چی کامیت کنی روی `fix-from-old` ذخیره می‌شه.
+
+---
+
+## 4) “رفتم پایین‌تر، حالا چطور برگردم بالاتر؟”
+
+### 4.1) برگشت به برنچ اصلی (مثلاً main)
+
+```bash
+git switch main
+```
+
+این تو رو برمی‌گردونه به نوک برنچ main (همون بالاترها).
+
+### 4.2) اگر نام برنچ قبلی رو یادت نیست (سوئیچ سریع)
+
+```bash
+git switch -
+```
+
+این بین دو وضعیت آخر جابه‌جات می‌کنه (خیلی کاربردیه).
+
+### 4.3) اگر کامیت/جایی رو گم کردی: reflog (نجات‌دهنده)
+
+این مهم‌ترین دستور برای “برگردوندن چیزایی که فکر می‌کنی گم شدن”:
+
+```bash
+git reflog
+```
+
+نمونه:
+
+```
+9f3a1c2 HEAD@{0}: checkout: moving from 7c0d9a1 to main
+7c0d9a1 HEAD@{1}: checkout: moving from main to 7c0d9a1
+```
+
+هر جا خواستی برگردی:
+
+```bash
+git checkout HEAD@{1}
+```
+
+---
+
+## 5) حذف چند کامیت با هم (دو حالت مهم)
+
+اینجا باید فرق این دو رو دقیق بفهمی:
+
+### حالت A) کامیت‌ها را “حذف کن ولی تاریخچه خراب نشه” (ایمن، مخصوصاً اگر push کردی)
+
+✅ بهترین روش: `revert` (کامیت معکوس می‌سازه)
+
+مثلاً می‌خوای 2 کامیت آخر رو برگردونی:
+
+```bash
+git revert HEAD
+git revert HEAD
+```
+
+یا بازه:
+
+```bash
+git revert 7c0d9a1..9f3a1c2
+```
+
+📌 این تاریخچه رو پاک نمی‌کنه؛ فقط اثرش رو برمی‌گردونه. مناسب وقتی که روی GitHub push کردی.
+
+---
+
+### حالت B) کامیت‌ها را “واقعاً از تاریخچه حذف کن” (بازنویسی تاریخچه)
+
+اینجا ابزار اصلی: **interactive rebase**
+
+فرض کن تاریخچه اینه:
+
+```
+9f3a1c2  (می‌خوای حذفش کنی)
+1ab22d0  (می‌خوای حذفش کنی)
+7c0d9a1
+4e11b08
+```
+
+می‌خوای دو کامیت آخر (`9f3a1c2` و `1ab22d0`) کلاً حذف بشن:
+
+```bash
+git rebase -i HEAD~2
+```
+
+یه ادیتور باز می‌شه مثل:
+
+```
+pick 1ab22d0 Add article about WebDAV
+pick 9f3a1c2 Update resume section
+```
+
+برای حذف، `pick` رو تبدیل کن به `drop` (یا خط رو پاک کن):
+
+```
+drop 1ab22d0 Add article about WebDAV
+drop 9f3a1c2 Update resume section
+```
+
+ذخیره کن و ببند. تموم.
+
+❗ اگر این برنچ قبلاً push شده باشد، برای اعمال روی GitHub باید:
+
+```bash
+git push --force-with-lease
+```
+
+(این کار روی پروژه‌های تیمی خطرناکه، ولی برای سایت شخصی خودت معمولاً مشکلی نداره.)
+
+---
+
+## 6) حذف “یک بازه” از کامیت‌ها (مثال واقعی)
+
+فرض کن می‌خوای کامیت‌های بین `A` و `D` رو حذف کنی:
+
+```
+D  9f3a1c2   ← می‌خوای حذف
+C  1ab22d0   ← می‌خوای حذف
+B  7c0d9a1   ← می‌خوای حذف
+A  4e11b08   ← این رو نگه می‌داری
+```
+
+یعنی فقط می‌خوای بعد از A، مستقیم برسی به قبل از B (همه‌ی B,C,D حذف).
+
+پس باید از “کامیت قبل از بازه” rebase کنی:
+
+```bash
+git rebase -i 4e11b08
+```
+
+ادیتور لیست کامیت‌های بعد از `4e11b08` رو می‌دهد. هر کدوم رو که می‌خوای حذف کنی `drop` کن.
+
+---
+
+## 7) رفتن روی یک برنچ دیگه و بعد برگشتن و اینکه کامیت‌ها “سر جاشون” بمونن
+
+### 7.1) دیدن برنچ‌ها
+
+```bash
+git branch -vv
+```
+
+### 7.2) رفتن به برنچ دیگر
+
+```bash
+git switch draft
+```
+
+### 7.3) برگشت به برنچ قبلی
+
+```bash
+git switch -
+```
+
+✅ کامیت‌های هر برنچ سر جاشون می‌مونن؛ چون هر برنچ تاریخچه خودش رو دارد.
+
+---
+
+## 8) من روی یک برنچ کامیت کردم، حالا می‌خوام همون کامیت‌ها رو بیارم روی main
+
+دو راه رایج:
+
+### 8.1) merge (همه چیز باهم)
+
+```bash
+git switch main
+git merge draft
+```
+
+### 8.2) cherry-pick (فقط چند کامیت خاص)
+
+مثلاً فقط این دو کامیت رو می‌خوای:
+
+```bash
+git switch main
+git cherry-pick 1ab22d0 9f3a1c2
+```
+
+---
+
+## 9) “از یک کامیت جدیدتر دوباره برگردم به یک کامیت قدیمی و بعد دوباره بیام جلو”
+
+این همون مشکلیه که گفتی “دیگه بالاترا رو نشون نمیده”.  
+راه درست:
+
+- اگر فقط خواستی **نگاه کنی**:
+    
+    - برو با `checkout` یا `switch --detach`
+        
+    - بعد برگرد `git switch main`
+        
+- اگر خواستی **واقعاً تاریخچه رو جلو/عقب کنی**:
+    
+    - از `reflog` استفاده کن
+        
+
+مثال:
+
+```bash
+git reflog
+# بعد
+git checkout HEAD@{0}
+```
+
+---
+
+# نسخه خیلی خلاصه (برای حفظ کردن)
+
+- دیدن کامیت‌ها:  
+    `git log --oneline --graph --all`
+    
+- دیدن تغییرات یک کامیت:  
+    `git show <hash>`
+    
+- رفتن به یک کامیت و ساخت برنچ از آن:  
+    `git switch --detach <hash>`  
+    `git switch -c new-branch`
+    
+- برگشت به آخرین وضعیت برنچ:  
+    `git switch main`
+    
+- نجات وقتی گم شدی:  
+    `git reflog`
+    
+- حذف واقعی چند کامیت:  
+    `git rebase -i ...` و `drop`
+    
+- برگرداندن بدون خراب کردن تاریخچه:  
+    `git revert ...`
+    
+
+---
+
+اگر یک خروجی واقعی از `git log --oneline --decorate --graph --all` پروژه‌ات را همینجا paste کنی، من دقیقاً **با هش‌های واقعی خودت** می‌گم:
+
+- کدام کامیت‌ها را drop کنی
+    
+- دستور دقیق rebase از کجا باشد
+    
+- و اگر push کردی، آیا `revert` بهتر است یا `rebase` + `force-with-lease`
+
+==================================================
+FILE: ./content/git/github/New Empty File.txt
+==================================================
+
+dsfdsfsdf
+
+==================================================
+FILE: ./content/README.md
+==================================================
+
+---
+title: Vault README
+layout: default
+---
+
+# content/
+Drop your folders and files here.
+
+- Folders appear in the hamburger menu automatically.
+- Files are listed and can be opened directly.
+
+==================================================
+FILE: ./dump_project.sh
+==================================================
+
+#!/bin/bash
+
+OUTPUT="project_dump.txt"
+
+# پاک کردن فایل قبلی اگر وجود داشت
+> "$OUTPUT"
+
+echo "===== PROJECT DUMP =====" >> "$OUTPUT"
+echo "Generated at: $(date)" >> "$OUTPUT"
+echo "" >> "$OUTPUT"
+
+# پیدا کردن فایل‌ها (به‌جز _site)
+find . \
+  -type f \
+  ! -path "./_site/*" \
+  ! -name "$OUTPUT" \
+  | sort \
+  | while read -r file; do
+
+    echo "" >> "$OUTPUT"
+    echo "==================================================" >> "$OUTPUT"
+    echo "FILE: $file" >> "$OUTPUT"
+    echo "==================================================" >> "$OUTPUT"
+    echo "" >> "$OUTPUT"
+
+    # اگر فایل باینری نبود، محتواشو بریز
+    if file "$file" | grep -q text; then
+        cat "$file" >> "$OUTPUT"
+    else
+        echo "[BINARY FILE - SKIPPED]" >> "$OUTPUT"
+    fi
+done
+
+echo "" >> "$OUTPUT"
+echo "===== END OF PROJECT =====" >> "$OUTPUT"
+
+==================================================
+FILE: ./.git/COMMIT_EDITMSG
+==================================================
+
+map page
+
+==================================================
+FILE: ./.git/config
+==================================================
+
+[core]
+	repositoryformatversion = 0
+	filemode = true
+	bare = false
+	logallrefupdates = true
+[remote "origin"]
+	url = https://github.com/sudoxs/sudoxs_web.git
+	fetch = +refs/heads/*:refs/remotes/origin/*
+[branch "main"]
+	remote = origin
+	merge = refs/heads/main
+
+==================================================
+FILE: ./.git/description
+==================================================
+
+Unnamed repository; edit this file 'description' to name the repository.
+
+==================================================
+FILE: ./.git/HEAD
+==================================================
+
+ref: refs/heads/main
+
+==================================================
+FILE: ./.git/hooks/applypatch-msg.sample
+==================================================
+
+#!/bin/sh
+#
+# An example hook script to check the commit log message taken by
+# applypatch from an e-mail message.
+#
+# The hook should exit with non-zero status after issuing an
+# appropriate message if it wants to stop the commit.  The hook is
+# allowed to edit the commit message file.
+#
+# To enable this hook, rename this file to "applypatch-msg".
+
+. git-sh-setup
+commitmsg="$(git rev-parse --git-path hooks/commit-msg)"
+test -x "$commitmsg" && exec "$commitmsg" ${1+"$@"}
+:
+
+==================================================
+FILE: ./.git/hooks/commit-msg.sample
+==================================================
+
+#!/bin/sh
+#
+# An example hook script to check the commit log message.
+# Called by "git commit" with one argument, the name of the file
+# that has the commit message.  The hook should exit with non-zero
+# status after issuing an appropriate message if it wants to stop the
+# commit.  The hook is allowed to edit the commit message file.
+#
+# To enable this hook, rename this file to "commit-msg".
+
+# Uncomment the below to add a Signed-off-by line to the message.
+# Doing this in a hook is a bad idea in general, but the prepare-commit-msg
+# hook is more suited to it.
+#
+# SOB=$(git var GIT_AUTHOR_IDENT | sed -n 's/^\(.*>\).*$/Signed-off-by: \1/p')
+# grep -qs "^$SOB" "$1" || echo "$SOB" >> "$1"
+
+# This example catches duplicate Signed-off-by lines.
+
+test "" = "$(grep '^Signed-off-by: ' "$1" |
+	 sort | uniq -c | sed -e '/^[ 	]*1[ 	]/d')" || {
+	echo >&2 Duplicate Signed-off-by lines.
+	exit 1
+}
+
+==================================================
+FILE: ./.git/hooks/fsmonitor-watchman.sample
+==================================================
+
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+use IPC::Open2;
+
+# An example hook script to integrate Watchman
+# (https://facebook.github.io/watchman/) with git to speed up detecting
+# new and modified files.
+#
+# The hook is passed a version (currently 2) and last update token
+# formatted as a string and outputs to stdout a new update token and
+# all files that have been modified since the update token. Paths must
+# be relative to the root of the working tree and separated by a single NUL.
+#
+# To enable this hook, rename this file to "query-watchman" and set
+# 'git config core.fsmonitor .git/hooks/query-watchman'
+#
+my ($version, $last_update_token) = @ARGV;
+
+# Uncomment for debugging
+# print STDERR "$0 $version $last_update_token\n";
+
+# Check the hook interface version
+if ($version ne 2) {
+	die "Unsupported query-fsmonitor hook version '$version'.\n" .
+	    "Falling back to scanning...\n";
+}
+
+my $git_work_tree = get_working_dir();
+
+my $retry = 1;
+
+my $json_pkg;
+eval {
+	require JSON::XS;
+	$json_pkg = "JSON::XS";
+	1;
+} or do {
+	require JSON::PP;
+	$json_pkg = "JSON::PP";
+};
+
+launch_watchman();
+
+sub launch_watchman {
+	my $o = watchman_query();
+	if (is_work_tree_watched($o)) {
+		output_result($o->{clock}, @{$o->{files}});
+	}
+}
+
+sub output_result {
+	my ($clockid, @files) = @_;
+
+	# Uncomment for debugging watchman output
+	# open (my $fh, ">", ".git/watchman-output.out");
+	# binmode $fh, ":utf8";
+	# print $fh "$clockid\n@files\n";
+	# close $fh;
+
+	binmode STDOUT, ":utf8";
+	print $clockid;
+	print "\0";
+	local $, = "\0";
+	print @files;
+}
+
+sub watchman_clock {
+	my $response = qx/watchman clock "$git_work_tree"/;
+	die "Failed to get clock id on '$git_work_tree'.\n" .
+		"Falling back to scanning...\n" if $? != 0;
+
+	return $json_pkg->new->utf8->decode($response);
+}
+
+sub watchman_query {
+	my $pid = open2(\*CHLD_OUT, \*CHLD_IN, 'watchman -j --no-pretty')
+	or die "open2() failed: $!\n" .
+	"Falling back to scanning...\n";
+
+	# In the query expression below we're asking for names of files that
+	# changed since $last_update_token but not from the .git folder.
+	#
+	# To accomplish this, we're using the "since" generator to use the
+	# recency index to select candidate nodes and "fields" to limit the
+	# output to file names only. Then we're using the "expression" term to
+	# further constrain the results.
+	my $last_update_line = "";
+	if (substr($last_update_token, 0, 1) eq "c") {
+		$last_update_token = "\"$last_update_token\"";
+		$last_update_line = qq[\n"since": $last_update_token,];
+	}
+	my $query = <<"	END";
+		["query", "$git_work_tree", {$last_update_line
+			"fields": ["name"],
+			"expression": ["not", ["dirname", ".git"]]
+		}]
+	END
+
+	# Uncomment for debugging the watchman query
+	# open (my $fh, ">", ".git/watchman-query.json");
+	# print $fh $query;
+	# close $fh;
+
+	print CHLD_IN $query;
+	close CHLD_IN;
+	my $response = do {local $/; <CHLD_OUT>};
+
+	# Uncomment for debugging the watch response
+	# open ($fh, ">", ".git/watchman-response.json");
+	# print $fh $response;
+	# close $fh;
+
+	die "Watchman: command returned no output.\n" .
+	"Falling back to scanning...\n" if $response eq "";
+	die "Watchman: command returned invalid output: $response\n" .
+	"Falling back to scanning...\n" unless $response =~ /^\{/;
+
+	return $json_pkg->new->utf8->decode($response);
+}
+
+sub is_work_tree_watched {
+	my ($output) = @_;
+	my $error = $output->{error};
+	if ($retry > 0 and $error and $error =~ m/unable to resolve root .* directory (.*) is not watched/) {
+		$retry--;
+		my $response = qx/watchman watch "$git_work_tree"/;
+		die "Failed to make watchman watch '$git_work_tree'.\n" .
+		    "Falling back to scanning...\n" if $? != 0;
+		$output = $json_pkg->new->utf8->decode($response);
+		$error = $output->{error};
+		die "Watchman: $error.\n" .
+		"Falling back to scanning...\n" if $error;
+
+		# Uncomment for debugging watchman output
+		# open (my $fh, ">", ".git/watchman-output.out");
+		# close $fh;
+
+		# Watchman will always return all files on the first query so
+		# return the fast "everything is dirty" flag to git and do the
+		# Watchman query just to get it over with now so we won't pay
+		# the cost in git to look up each individual file.
+		my $o = watchman_clock();
+		$error = $output->{error};
+
+		die "Watchman: $error.\n" .
+		"Falling back to scanning...\n" if $error;
+
+		output_result($o->{clock}, ("/"));
+		$last_update_token = $o->{clock};
+
+		eval { launch_watchman() };
+		return 0;
+	}
+
+	die "Watchman: $error.\n" .
+	"Falling back to scanning...\n" if $error;
+
+	return 1;
+}
+
+sub get_working_dir {
+	my $working_dir;
+	if ($^O =~ 'msys' || $^O =~ 'cygwin') {
+		$working_dir = Win32::GetCwd();
+		$working_dir =~ tr/\\/\//;
+	} else {
+		require Cwd;
+		$working_dir = Cwd::cwd();
+	}
+
+	return $working_dir;
+}
+
+==================================================
+FILE: ./.git/hooks/post-update.sample
+==================================================
+
+#!/bin/sh
+#
+# An example hook script to prepare a packed repository for use over
+# dumb transports.
+#
+# To enable this hook, rename this file to "post-update".
+
+exec git update-server-info
+
+==================================================
+FILE: ./.git/hooks/pre-applypatch.sample
+==================================================
+
+#!/bin/sh
+#
+# An example hook script to verify what is about to be committed
+# by applypatch from an e-mail message.
+#
+# The hook should exit with non-zero status after issuing an
+# appropriate message if it wants to stop the commit.
+#
+# To enable this hook, rename this file to "pre-applypatch".
+
+. git-sh-setup
+precommit="$(git rev-parse --git-path hooks/pre-commit)"
+test -x "$precommit" && exec "$precommit" ${1+"$@"}
+:
+
+==================================================
+FILE: ./.git/hooks/pre-commit.sample
+==================================================
+
+#!/bin/sh
+#
+# An example hook script to verify what is about to be committed.
+# Called by "git commit" with no arguments.  The hook should
+# exit with non-zero status after issuing an appropriate message if
+# it wants to stop the commit.
+#
+# To enable this hook, rename this file to "pre-commit".
+
+if git rev-parse --verify HEAD >/dev/null 2>&1
+then
+	against=HEAD
+else
+	# Initial commit: diff against an empty tree object
+	against=$(git hash-object -t tree /dev/null)
+fi
+
+# If you want to allow non-ASCII filenames set this variable to true.
+allownonascii=$(git config --type=bool hooks.allownonascii)
+
+# Redirect output to stderr.
+exec 1>&2
+
+# Cross platform projects tend to avoid non-ASCII filenames; prevent
+# them from being added to the repository. We exploit the fact that the
+# printable range starts at the space character and ends with tilde.
+if [ "$allownonascii" != "true" ] &&
+	# Note that the use of brackets around a tr range is ok here, (it's
+	# even required, for portability to Solaris 10's /usr/bin/tr), since
+	# the square bracket bytes happen to fall in the designated range.
+	test $(git diff-index --cached --name-only --diff-filter=A -z $against |
+	  LC_ALL=C tr -d '[ -~]\0' | wc -c) != 0
+then
+	cat <<\EOF
+Error: Attempt to add a non-ASCII file name.
+
+This can cause problems if you want to work with people on other platforms.
+
+To be portable it is advisable to rename the file.
+
+If you know what you are doing you can disable this check using:
+
+  git config hooks.allownonascii true
+EOF
+	exit 1
+fi
+
+# If there are whitespace errors, print the offending file names and fail.
+exec git diff-index --check --cached $against --
+
+==================================================
+FILE: ./.git/hooks/pre-merge-commit.sample
+==================================================
+
+#!/bin/sh
+#
+# An example hook script to verify what is about to be committed.
+# Called by "git merge" with no arguments.  The hook should
+# exit with non-zero status after issuing an appropriate message to
+# stderr if it wants to stop the merge commit.
+#
+# To enable this hook, rename this file to "pre-merge-commit".
+
+. git-sh-setup
+test -x "$GIT_DIR/hooks/pre-commit" &&
+        exec "$GIT_DIR/hooks/pre-commit"
+:
+
+==================================================
+FILE: ./.git/hooks/prepare-commit-msg.sample
+==================================================
+
+#!/bin/sh
+#
+# An example hook script to prepare the commit log message.
+# Called by "git commit" with the name of the file that has the
+# commit message, followed by the description of the commit
+# message's source.  The hook's purpose is to edit the commit
+# message file.  If the hook fails with a non-zero status,
+# the commit is aborted.
+#
+# To enable this hook, rename this file to "prepare-commit-msg".
+
+# This hook includes three examples. The first one removes the
+# "# Please enter the commit message..." help message.
+#
+# The second includes the output of "git diff --name-status -r"
+# into the message, just before the "git status" output.  It is
+# commented because it doesn't cope with --amend or with squashed
+# commits.
+#
+# The third example adds a Signed-off-by line to the message, that can
+# still be edited.  This is rarely a good idea.
+
+COMMIT_MSG_FILE=$1
+COMMIT_SOURCE=$2
+SHA1=$3
+
+/usr/bin/perl -i.bak -ne 'print unless(m/^. Please enter the commit message/..m/^#$/)' "$COMMIT_MSG_FILE"
+
+# case "$COMMIT_SOURCE,$SHA1" in
+#  ,|template,)
+#    /usr/bin/perl -i.bak -pe '
+#       print "\n" . `git diff --cached --name-status -r`
+# 	 if /^#/ && $first++ == 0' "$COMMIT_MSG_FILE" ;;
+#  *) ;;
+# esac
+
+# SOB=$(git var GIT_COMMITTER_IDENT | sed -n 's/^\(.*>\).*$/Signed-off-by: \1/p')
+# git interpret-trailers --in-place --trailer "$SOB" "$COMMIT_MSG_FILE"
+# if test -z "$COMMIT_SOURCE"
+# then
+#   /usr/bin/perl -i.bak -pe 'print "\n" if !$first_line++' "$COMMIT_MSG_FILE"
+# fi
+
+==================================================
+FILE: ./.git/hooks/pre-push.sample
+==================================================
+
+#!/bin/sh
+
+# An example hook script to verify what is about to be pushed.  Called by "git
+# push" after it has checked the remote status, but before anything has been
+# pushed.  If this script exits with a non-zero status nothing will be pushed.
+#
+# This hook is called with the following parameters:
+#
+# $1 -- Name of the remote to which the push is being done
+# $2 -- URL to which the push is being done
+#
+# If pushing without using a named remote those arguments will be equal.
+#
+# Information about the commits which are being pushed is supplied as lines to
+# the standard input in the form:
+#
+#   <local ref> <local oid> <remote ref> <remote oid>
+#
+# This sample shows how to prevent push of commits where the log message starts
+# with "WIP" (work in progress).
+
+remote="$1"
+url="$2"
+
+zero=$(git hash-object --stdin </dev/null | tr '[0-9a-f]' '0')
+
+while read local_ref local_oid remote_ref remote_oid
+do
+	if test "$local_oid" = "$zero"
+	then
+		# Handle delete
+		:
+	else
+		if test "$remote_oid" = "$zero"
+		then
+			# New branch, examine all commits
+			range="$local_oid"
+		else
+			# Update to existing branch, examine new commits
+			range="$remote_oid..$local_oid"
+		fi
+
+		# Check for WIP commit
+		commit=$(git rev-list -n 1 --grep '^WIP' "$range")
+		if test -n "$commit"
+		then
+			echo >&2 "Found WIP commit in $local_ref, not pushing"
+			exit 1
+		fi
+	fi
+done
+
+exit 0
+
+==================================================
+FILE: ./.git/hooks/pre-rebase.sample
+==================================================
+
+#!/bin/sh
+#
+# Copyright (c) 2006, 2008 Junio C Hamano
+#
+# The "pre-rebase" hook is run just before "git rebase" starts doing
+# its job, and can prevent the command from running by exiting with
+# non-zero status.
+#
+# The hook is called with the following parameters:
+#
+# $1 -- the upstream the series was forked from.
+# $2 -- the branch being rebased (or empty when rebasing the current branch).
+#
+# This sample shows how to prevent topic branches that are already
+# merged to 'next' branch from getting rebased, because allowing it
+# would result in rebasing already published history.
+
+publish=next
+basebranch="$1"
+if test "$#" = 2
+then
+	topic="refs/heads/$2"
+else
+	topic=`git symbolic-ref HEAD` ||
+	exit 0 ;# we do not interrupt rebasing detached HEAD
+fi
+
+case "$topic" in
+refs/heads/??/*)
+	;;
+*)
+	exit 0 ;# we do not interrupt others.
+	;;
+esac
+
+# Now we are dealing with a topic branch being rebased
+# on top of master.  Is it OK to rebase it?
+
+# Does the topic really exist?
+git show-ref -q "$topic" || {
+	echo >&2 "No such branch $topic"
+	exit 1
+}
+
+# Is topic fully merged to master?
+not_in_master=`git rev-list --pretty=oneline ^master "$topic"`
+if test -z "$not_in_master"
+then
+	echo >&2 "$topic is fully merged to master; better remove it."
+	exit 1 ;# we could allow it, but there is no point.
+fi
+
+# Is topic ever merged to next?  If so you should not be rebasing it.
+only_next_1=`git rev-list ^master "^$topic" ${publish} | sort`
+only_next_2=`git rev-list ^master           ${publish} | sort`
+if test "$only_next_1" = "$only_next_2"
+then
+	not_in_topic=`git rev-list "^$topic" master`
+	if test -z "$not_in_topic"
+	then
+		echo >&2 "$topic is already up to date with master"
+		exit 1 ;# we could allow it, but there is no point.
+	else
+		exit 0
+	fi
+else
+	not_in_next=`git rev-list --pretty=oneline ^${publish} "$topic"`
+	/usr/bin/perl -e '
+		my $topic = $ARGV[0];
+		my $msg = "* $topic has commits already merged to public branch:\n";
+		my (%not_in_next) = map {
+			/^([0-9a-f]+) /;
+			($1 => 1);
+		} split(/\n/, $ARGV[1]);
+		for my $elem (map {
+				/^([0-9a-f]+) (.*)$/;
+				[$1 => $2];
+			} split(/\n/, $ARGV[2])) {
+			if (!exists $not_in_next{$elem->[0]}) {
+				if ($msg) {
+					print STDERR $msg;
+					undef $msg;
+				}
+				print STDERR " $elem->[1]\n";
+			}
+		}
+	' "$topic" "$not_in_next" "$not_in_master"
+	exit 1
+fi
+
+<<\DOC_END
+
+This sample hook safeguards topic branches that have been
+published from being rewound.
+
+The workflow assumed here is:
+
+ * Once a topic branch forks from "master", "master" is never
+   merged into it again (either directly or indirectly).
+
+ * Once a topic branch is fully cooked and merged into "master",
+   it is deleted.  If you need to build on top of it to correct
+   earlier mistakes, a new topic branch is created by forking at
+   the tip of the "master".  This is not strictly necessary, but
+   it makes it easier to keep your history simple.
+
+ * Whenever you need to test or publish your changes to topic
+   branches, merge them into "next" branch.
+
+The script, being an example, hardcodes the publish branch name
+to be "next", but it is trivial to make it configurable via
+$GIT_DIR/config mechanism.
+
+With this workflow, you would want to know:
+
+(1) ... if a topic branch has ever been merged to "next".  Young
+    topic branches can have stupid mistakes you would rather
+    clean up before publishing, and things that have not been
+    merged into other branches can be easily rebased without
+    affecting other people.  But once it is published, you would
+    not want to rewind it.
+
+(2) ... if a topic branch has been fully merged to "master".
+    Then you can delete it.  More importantly, you should not
+    build on top of it -- other people may already want to
+    change things related to the topic as patches against your
+    "master", so if you need further changes, it is better to
+    fork the topic (perhaps with the same name) afresh from the
+    tip of "master".
+
+Let's look at this example:
+
+		   o---o---o---o---o---o---o---o---o---o "next"
+		  /       /           /           /
+		 /   a---a---b A     /           /
+		/   /               /           /
+	       /   /   c---c---c---c B         /
+	      /   /   /             \         /
+	     /   /   /   b---b C     \       /
+	    /   /   /   /             \     /
+    ---o---o---o---o---o---o---o---o---o---o---o "master"
+
+
+A, B and C are topic branches.
+
+ * A has one fix since it was merged up to "next".
+
+ * B has finished.  It has been fully merged up to "master" and "next",
+   and is ready to be deleted.
+
+ * C has not merged to "next" at all.
+
+We would want to allow C to be rebased, refuse A, and encourage
+B to be deleted.
+
+To compute (1):
+
+	git rev-list ^master ^topic next
+	git rev-list ^master        next
+
+	if these match, topic has not merged in next at all.
+
+To compute (2):
+
+	git rev-list master..topic
+
+	if this is empty, it is fully merged to "master".
+
+DOC_END
+
+==================================================
+FILE: ./.git/hooks/pre-receive.sample
+==================================================
+
+#!/bin/sh
+#
+# An example hook script to make use of push options.
+# The example simply echoes all push options that start with 'echoback='
+# and rejects all pushes when the "reject" push option is used.
+#
+# To enable this hook, rename this file to "pre-receive".
+
+if test -n "$GIT_PUSH_OPTION_COUNT"
+then
+	i=0
+	while test "$i" -lt "$GIT_PUSH_OPTION_COUNT"
+	do
+		eval "value=\$GIT_PUSH_OPTION_$i"
+		case "$value" in
+		echoback=*)
+			echo "echo from the pre-receive-hook: ${value#*=}" >&2
+			;;
+		reject)
+			exit 1
+		esac
+		i=$((i + 1))
+	done
+fi
+
+==================================================
+FILE: ./.git/hooks/push-to-checkout.sample
+==================================================
+
+#!/bin/sh
+
+# An example hook script to update a checked-out tree on a git push.
+#
+# This hook is invoked by git-receive-pack(1) when it reacts to git
+# push and updates reference(s) in its repository, and when the push
+# tries to update the branch that is currently checked out and the
+# receive.denyCurrentBranch configuration variable is set to
+# updateInstead.
+#
+# By default, such a push is refused if the working tree and the index
+# of the remote repository has any difference from the currently
+# checked out commit; when both the working tree and the index match
+# the current commit, they are updated to match the newly pushed tip
+# of the branch. This hook is to be used to override the default
+# behaviour; however the code below reimplements the default behaviour
+# as a starting point for convenient modification.
+#
+# The hook receives the commit with which the tip of the current
+# branch is going to be updated:
+commit=$1
+
+# It can exit with a non-zero status to refuse the push (when it does
+# so, it must not modify the index or the working tree).
+die () {
+	echo >&2 "$*"
+	exit 1
+}
+
+# Or it can make any necessary changes to the working tree and to the
+# index to bring them to the desired state when the tip of the current
+# branch is updated to the new commit, and exit with a zero status.
+#
+# For example, the hook can simply run git read-tree -u -m HEAD "$1"
+# in order to emulate git fetch that is run in the reverse direction
+# with git push, as the two-tree form of git read-tree -u -m is
+# essentially the same as git switch or git checkout that switches
+# branches while keeping the local changes in the working tree that do
+# not interfere with the difference between the branches.
+
+# The below is a more-or-less exact translation to shell of the C code
+# for the default behaviour for git's push-to-checkout hook defined in
+# the push_to_deploy() function in builtin/receive-pack.c.
+#
+# Note that the hook will be executed from the repository directory,
+# not from the working tree, so if you want to perform operations on
+# the working tree, you will have to adapt your code accordingly, e.g.
+# by adding "cd .." or using relative paths.
+
+if ! git update-index -q --ignore-submodules --refresh
+then
+	die "Up-to-date check failed"
+fi
+
+if ! git diff-files --quiet --ignore-submodules --
+then
+	die "Working directory has unstaged changes"
+fi
+
+# This is a rough translation of:
+#
+#   head_has_history() ? "HEAD" : EMPTY_TREE_SHA1_HEX
+if git cat-file -e HEAD 2>/dev/null
+then
+	head=HEAD
+else
+	head=$(git hash-object -t tree --stdin </dev/null)
+fi
+
+if ! git diff-index --quiet --cached --ignore-submodules $head --
+then
+	die "Working directory has staged changes"
+fi
+
+if ! git read-tree -u -m "$commit"
+then
+	die "Could not update working tree to new HEAD"
+fi
+
+==================================================
+FILE: ./.git/hooks/sendemail-validate.sample
+==================================================
+
+#!/bin/sh
+
+# An example hook script to validate a patch (and/or patch series) before
+# sending it via email.
+#
+# The hook should exit with non-zero status after issuing an appropriate
+# message if it wants to prevent the email(s) from being sent.
+#
+# To enable this hook, rename this file to "sendemail-validate".
+#
+# By default, it will only check that the patch(es) can be applied on top of
+# the default upstream branch without conflicts in a secondary worktree. After
+# validation (successful or not) of the last patch of a series, the worktree
+# will be deleted.
+#
+# The following config variables can be set to change the default remote and
+# remote ref that are used to apply the patches against:
+#
+#   sendemail.validateRemote (default: origin)
+#   sendemail.validateRemoteRef (default: HEAD)
+#
+# Replace the TODO placeholders with appropriate checks according to your
+# needs.
+
+validate_cover_letter () {
+	file="$1"
+	# TODO: Replace with appropriate checks (e.g. spell checking).
+	true
+}
+
+validate_patch () {
+	file="$1"
+	# Ensure that the patch applies without conflicts.
+	git am -3 "$file" || return
+	# TODO: Replace with appropriate checks for this patch
+	# (e.g. checkpatch.pl).
+	true
+}
+
+validate_series () {
+	# TODO: Replace with appropriate checks for the whole series
+	# (e.g. quick build, coding style checks, etc.).
+	true
+}
+
+# main -------------------------------------------------------------------------
+
+if test "$GIT_SENDEMAIL_FILE_COUNTER" = 1
+then
+	remote=$(git config --default origin --get sendemail.validateRemote) &&
+	ref=$(git config --default HEAD --get sendemail.validateRemoteRef) &&
+	worktree=$(mktemp --tmpdir -d sendemail-validate.XXXXXXX) &&
+	git worktree add -fd --checkout "$worktree" "refs/remotes/$remote/$ref" &&
+	git config --replace-all sendemail.validateWorktree "$worktree"
+else
+	worktree=$(git config --get sendemail.validateWorktree)
+fi || {
+	echo "sendemail-validate: error: failed to prepare worktree" >&2
+	exit 1
+}
+
+unset GIT_DIR GIT_WORK_TREE
+cd "$worktree" &&
+
+if grep -q "^diff --git " "$1"
+then
+	validate_patch "$1"
+else
+	validate_cover_letter "$1"
+fi &&
+
+if test "$GIT_SENDEMAIL_FILE_COUNTER" = "$GIT_SENDEMAIL_FILE_TOTAL"
+then
+	git config --unset-all sendemail.validateWorktree &&
+	trap 'git worktree remove -ff "$worktree"' EXIT &&
+	validate_series
+fi
+
+==================================================
+FILE: ./.git/hooks/update.sample
+==================================================
+
+#!/bin/sh
+#
+# An example hook script to block unannotated tags from entering.
+# Called by "git receive-pack" with arguments: refname sha1-old sha1-new
+#
+# To enable this hook, rename this file to "update".
+#
+# Config
+# ------
+# hooks.allowunannotated
+#   This boolean sets whether unannotated tags will be allowed into the
+#   repository.  By default they won't be.
+# hooks.allowdeletetag
+#   This boolean sets whether deleting tags will be allowed in the
+#   repository.  By default they won't be.
+# hooks.allowmodifytag
+#   This boolean sets whether a tag may be modified after creation. By default
+#   it won't be.
+# hooks.allowdeletebranch
+#   This boolean sets whether deleting branches will be allowed in the
+#   repository.  By default they won't be.
+# hooks.denycreatebranch
+#   This boolean sets whether remotely creating branches will be denied
+#   in the repository.  By default this is allowed.
+#
+
+# --- Command line
+refname="$1"
+oldrev="$2"
+newrev="$3"
+
+# --- Safety check
+if [ -z "$GIT_DIR" ]; then
+	echo "Don't run this script from the command line." >&2
+	echo " (if you want, you could supply GIT_DIR then run" >&2
+	echo "  $0 <ref> <oldrev> <newrev>)" >&2
+	exit 1
+fi
+
+if [ -z "$refname" -o -z "$oldrev" -o -z "$newrev" ]; then
+	echo "usage: $0 <ref> <oldrev> <newrev>" >&2
+	exit 1
+fi
+
+# --- Config
+allowunannotated=$(git config --type=bool hooks.allowunannotated)
+allowdeletebranch=$(git config --type=bool hooks.allowdeletebranch)
+denycreatebranch=$(git config --type=bool hooks.denycreatebranch)
+allowdeletetag=$(git config --type=bool hooks.allowdeletetag)
+allowmodifytag=$(git config --type=bool hooks.allowmodifytag)
+
+# check for no description
+projectdesc=$(sed -e '1q' "$GIT_DIR/description")
+case "$projectdesc" in
+"Unnamed repository"* | "")
+	echo "*** Project description file hasn't been set" >&2
+	exit 1
+	;;
+esac
+
+# --- Check types
+# if $newrev is 0000...0000, it's a commit to delete a ref.
+zero=$(git hash-object --stdin </dev/null | tr '[0-9a-f]' '0')
+if [ "$newrev" = "$zero" ]; then
+	newrev_type=delete
+else
+	newrev_type=$(git cat-file -t $newrev)
+fi
+
+case "$refname","$newrev_type" in
+	refs/tags/*,commit)
+		# un-annotated tag
+		short_refname=${refname##refs/tags/}
+		if [ "$allowunannotated" != "true" ]; then
+			echo "*** The un-annotated tag, $short_refname, is not allowed in this repository" >&2
+			echo "*** Use 'git tag [ -a | -s ]' for tags you want to propagate." >&2
+			exit 1
+		fi
+		;;
+	refs/tags/*,delete)
+		# delete tag
+		if [ "$allowdeletetag" != "true" ]; then
+			echo "*** Deleting a tag is not allowed in this repository" >&2
+			exit 1
+		fi
+		;;
+	refs/tags/*,tag)
+		# annotated tag
+		if [ "$allowmodifytag" != "true" ] && git rev-parse $refname > /dev/null 2>&1
+		then
+			echo "*** Tag '$refname' already exists." >&2
+			echo "*** Modifying a tag is not allowed in this repository." >&2
+			exit 1
+		fi
+		;;
+	refs/heads/*,commit)
+		# branch
+		if [ "$oldrev" = "$zero" -a "$denycreatebranch" = "true" ]; then
+			echo "*** Creating a branch is not allowed in this repository" >&2
+			exit 1
+		fi
+		;;
+	refs/heads/*,delete)
+		# delete branch
+		if [ "$allowdeletebranch" != "true" ]; then
+			echo "*** Deleting a branch is not allowed in this repository" >&2
+			exit 1
+		fi
+		;;
+	refs/remotes/*,commit)
+		# tracking branch
+		;;
+	refs/remotes/*,delete)
+		# delete tracking branch
+		if [ "$allowdeletebranch" != "true" ]; then
+			echo "*** Deleting a tracking branch is not allowed in this repository" >&2
+			exit 1
+		fi
+		;;
+	*)
+		# Anything else (is there anything else?)
+		echo "*** Update hook: unknown type of update to ref $refname of type $newrev_type" >&2
+		exit 1
+		;;
+esac
+
+# --- Finished
+exit 0
+
+==================================================
+FILE: ./.gitignore
+==================================================
+
+# =========================
+# Jekyll / Ruby
+# =========================
+_site/
+.sass-cache/
+.jekyll-cache/
+.jekyll-metadata
+.bundle/
+vendor/bundle/
+Gemfile.lock
+
+# =========================
+# OS / Editor junk
+# =========================
+.DS_Store
+Thumbs.db
+
+# VS Code
+.vscode/
+*.code-workspace
+
+# JetBrains
+.idea/
+
+# =========================
+# Node / frontend (if you ever add it)
+# =========================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# =========================
+# Logs / temp
+# =========================
+*.log
+*.tmp
+*.swp
+*.swo
+
+# =========================
+# Python (if used in tooling)
+# =========================
+__pycache__/
+*.pyc
+
+# =========================
+# Optional: local dev caches
+# =========================
+.cache/
+
+==================================================
+FILE: ./.git/index
+==================================================
+
+[BINARY FILE - SKIPPED]
+
+==================================================
+FILE: ./.git/info/exclude
+==================================================
+
+# git ls-files --others --exclude-from=.git/info/exclude
+# Lines that start with '#' are comments.
+# For a project mostly in C, the following would be a good set of
+# exclude patterns (uncomment them if you want to use them):
+# *.[oa]
+# *~
+
+==================================================
+FILE: ./.git/logs/HEAD
+==================================================
+
+0000000000000000000000000000000000000000 d827f409f5bbdf25acdbe152488518f041abcf96 keyaruga <kachigaru369@yahoo.com> 1769565990 -0500	commit (initial): first commit
+d827f409f5bbdf25acdbe152488518f041abcf96 0000000000000000000000000000000000000000 keyaruga <kachigaru369@yahoo.com> 1769565995 -0500	Branch: renamed refs/heads/master to refs/heads/main
+0000000000000000000000000000000000000000 d827f409f5bbdf25acdbe152488518f041abcf96 keyaruga <kachigaru369@yahoo.com> 1769565995 -0500	Branch: renamed refs/heads/master to refs/heads/main
+d827f409f5bbdf25acdbe152488518f041abcf96 665eeff43f6ffdc56304430257658bb458794680 keyaruga <kachigaru369@yahoo.com> 1769566447 -0500	commit: js fixed
+665eeff43f6ffdc56304430257658bb458794680 2e8d760a5524bac9184fa5a52b561eb11f05206b keyaruga <kachigaru369@yahoo.com> 1769568799 -0500	commit: fixed 1
+2e8d760a5524bac9184fa5a52b561eb11f05206b 82254b262c65386554cd1f78a80c21db8bab7174 keyaruga <kachigaru369@yahoo.com> 1769573612 -0500	commit: fixed searching
+82254b262c65386554cd1f78a80c21db8bab7174 d3490cc820122dc3982e79681096f95ea49c444d keyaruga <kachigaru369@yahoo.com> 1769581934 -0500	commit: fixed css
+d3490cc820122dc3982e79681096f95ea49c444d d7cec834892fed6858952978fbe52a8041ddc166 keyaruga <kachigaru369@yahoo.com> 1770569565 -0500	commit: map page
+
+==================================================
+FILE: ./.git/logs/refs/heads/main
+==================================================
+
+0000000000000000000000000000000000000000 d827f409f5bbdf25acdbe152488518f041abcf96 keyaruga <kachigaru369@yahoo.com> 1769565990 -0500	commit (initial): first commit
+d827f409f5bbdf25acdbe152488518f041abcf96 d827f409f5bbdf25acdbe152488518f041abcf96 keyaruga <kachigaru369@yahoo.com> 1769565995 -0500	Branch: renamed refs/heads/master to refs/heads/main
+d827f409f5bbdf25acdbe152488518f041abcf96 665eeff43f6ffdc56304430257658bb458794680 keyaruga <kachigaru369@yahoo.com> 1769566447 -0500	commit: js fixed
+665eeff43f6ffdc56304430257658bb458794680 2e8d760a5524bac9184fa5a52b561eb11f05206b keyaruga <kachigaru369@yahoo.com> 1769568799 -0500	commit: fixed 1
+2e8d760a5524bac9184fa5a52b561eb11f05206b 82254b262c65386554cd1f78a80c21db8bab7174 keyaruga <kachigaru369@yahoo.com> 1769573612 -0500	commit: fixed searching
+82254b262c65386554cd1f78a80c21db8bab7174 d3490cc820122dc3982e79681096f95ea49c444d keyaruga <kachigaru369@yahoo.com> 1769581934 -0500	commit: fixed css
+d3490cc820122dc3982e79681096f95ea49c444d d7cec834892fed6858952978fbe52a8041ddc166 keyaruga <kachigaru369@yahoo.com> 1770569565 -0500	commit: map page
+
+==================================================
+FILE: ./.git/logs/refs/remotes/origin/main
+==================================================
+
+0000000000000000000000000000000000000000 d827f409f5bbdf25acdbe152488518f041abcf96 keyaruga <kachigaru369@yahoo.com> 1769566020 -0500	update by push
+d827f409f5bbdf25acdbe152488518f041abcf96 665eeff43f6ffdc56304430257658bb458794680 keyaruga <kachigaru369@yahoo.com> 1769566463 -0500	update by push
+665eeff43f6ffdc56304430257658bb458794680 2e8d760a5524bac9184fa5a52b561eb11f05206b keyaruga <kachigaru369@yahoo.com> 1769568813 -0500	update by push
+2e8d760a5524bac9184fa5a52b561eb11f05206b 82254b262c65386554cd1f78a80c21db8bab7174 keyaruga <kachigaru369@yahoo.com> 1769573626 -0500	update by push
+82254b262c65386554cd1f78a80c21db8bab7174 d3490cc820122dc3982e79681096f95ea49c444d keyaruga <kachigaru369@yahoo.com> 1769581957 -0500	update by push
+d3490cc820122dc3982e79681096f95ea49c444d d7cec834892fed6858952978fbe52a8041ddc166 keyaruga <kachigaru369@yahoo.com> 1770569590 -0500	update by push
+
+==================================================
+FILE: ./.git/objects/05/905432e259b83cd7b925dc5ed88a461bca8288
+==================================================
+
+[BINARY FILE - SKIPPED]
+
+==================================================
+FILE: ./.git/objects/07/6794f2f50a2dd42ec82714ebb82a250f51302b
+==================================================
+
+[BINARY FILE - SKIPPED]
+
+==================================================
+FILE: ./.git/objects/07/af9e8d2c1a18c7d091820337feb28b7d98f0fb
+==================================================
+
+[BINARY FILE - SKIPPED]
+
+==================================================
+FILE: ./.git/objects/0f/20d83fbbe13e88b9f3ef67835474114a94de0c
+==================================================
+
+[BINARY FILE - SKIPPED]
+
+==================================================
+FILE: ./.git/objects/0f/d2ff50894040842d7e36f2d05b5aeafcbe4da2
+==================================================
+
+[BINARY FILE - SKIPPED]
+
+==================================================
+FILE: ./.git/objects/15/b0f32ae0c315b3769b3df720ea837bfb754cf9
+==================================================
+
+[BINARY FILE - SKIPPED]
+
+==================================================
+FILE: ./.git/objects/16/98d8380139d09f11eccd9246d605344f001cc6
+==================================================
+
+[BINARY FILE - SKIPPED]
+
+==================================================
+FILE: ./.git/objects/1a/b3eb64fc52c9966fbfcda5ffe03e3ff9d4d2e7
+==================================================
+
+[BINARY FILE - SKIPPED]
+
+==================================================
+FILE: ./.git/objects/21/1ace9fe253c9d15d2305dd2ff18286928e0a0d
+==================================================
+
+[BINARY FILE - SKIPPED]
+
+==================================================
+FILE: ./.git/objects/26/a7d6b354c807e7f4b60f749d7f10793e08eb84
+==================================================
+
+[BINARY FILE - SKIPPED]
+
+==================================================
+FILE: ./.git/objects/29/b5df0a261b6277e2480ec33430e02ab1ff9ae6
+==================================================
+
+[BINARY FILE - SKIPPED]
+
+==================================================
+FILE: ./.git/objects/2e/8d760a5524bac9184fa5a52b561eb11f05206b
+==================================================
+
+[BINARY FILE - SKIPPED]
+
+==================================================
+FILE: ./.git/objects/33/a38f2f88e0cb92c8749feecee73a4f8d294139
+==================================================
+
+[BINARY FILE - SKIPPED]
+
+==================================================
+FILE: ./.git/objects/35/2402a93be991521ca484645ae4232253c16de7
+==================================================
+
+[BINARY FILE - SKIPPED]
+
+==================================================
+FILE: ./.git/objects/36/d047cb1459f1fd48b9bd361c43df861291dc2b
+==================================================
+
+[BINARY FILE - SKIPPED]
+
+==================================================
+FILE: ./.git/objects/39/30da99dca3d0a0dab694c8ef02d67bb5148fa5
+==================================================
+
+[BINARY FILE - SKIPPED]
+
+==================================================
+FILE: ./.git/objects/43/78760b60225fa8a1e2dd3f3c2f8437f33a48d2
+==================================================
+
+[BINARY FILE - SKIPPED]
+
+==================================================
+FILE: ./.git/objects/4a/76fa72bef105fc561facf3cfe710da582e1cac
+==================================================
+
+[BINARY FILE - SKIPPED]
+
+==================================================
+FILE: ./.git/objects/4f/5742b747a0bfc5b71e830cd6e063c2def081cf
+==================================================
+
+[BINARY FILE - SKIPPED]
+
+==================================================
+FILE: ./.git/objects/50/bbce1f7f9b4b1b6cceb8a0e01cbc064b57c595
+==================================================
+
+[BINARY FILE - SKIPPED]
+
+==================================================
+FILE: ./.git/objects/53/59e2019d8a48f53158a8447eaaf7dc5a3094c7
+==================================================
+
+[BINARY FILE - SKIPPED]
+
+==================================================
+FILE: ./.git/objects/56/cc695d24923cec87b58901332589a9f92586f2
+==================================================
+
+[BINARY FILE - SKIPPED]
+
+==================================================
+FILE: ./.git/objects/57/2634d03e58230feb86d378dbb60e28898f2bce
+==================================================
+
+[BINARY FILE - SKIPPED]
+
+==================================================
+FILE: ./.git/objects/59/7409d33da9cd5d8235ef39939283f841207a2e
+==================================================
+
+[BINARY FILE - SKIPPED]
+
+==================================================
+FILE: ./.git/objects/62/fba34a19ea14ad2e219b6a0325f5799d43f62f
+==================================================
+
+[BINARY FILE - SKIPPED]
+
+==================================================
+FILE: ./.git/objects/65/d45908b2f24183179a0d03c5eb394949d3fb50
+==================================================
+
+[BINARY FILE - SKIPPED]
+
+==================================================
+FILE: ./.git/objects/66/5eeff43f6ffdc56304430257658bb458794680
+==================================================
+
+[BINARY FILE - SKIPPED]
+
+==================================================
+FILE: ./.git/objects/66/7161c06c1676bd774434ec566cd9a63837bb27
+==================================================
+
+[BINARY FILE - SKIPPED]
+
+==================================================
+FILE: ./.git/objects/67/d5d91ca3ce2b62fc5aac95dee7411547a75c58
+==================================================
+
+[BINARY FILE - SKIPPED]
+
+==================================================
+FILE: ./.git/objects/68/b86c11a75e6cac71c5ba7085cfd319967043ee
+==================================================
+
+[BINARY FILE - SKIPPED]
+
+==================================================
+FILE: ./.git/objects/6e/d585b92acfff6900a67e37bd7dd927f5ca02f5
+==================================================
+
+[BINARY FILE - SKIPPED]
+
+==================================================
+FILE: ./.git/objects/82/254b262c65386554cd1f78a80c21db8bab7174
+==================================================
+
+[BINARY FILE - SKIPPED]
+
+==================================================
+FILE: ./.git/objects/83/33bd135908fb2eb2835ecd64bcd118b65fbdc1
+==================================================
+
+[BINARY FILE - SKIPPED]
+
+==================================================
+FILE: ./.git/objects/85/65752dc343b503a5843220cee73666f9f84216
+==================================================
+
+[BINARY FILE - SKIPPED]
+
+==================================================
+FILE: ./.git/objects/87/65a206e4f945981f687a0d827b7a3a8714273d
+==================================================
+
+[BINARY FILE - SKIPPED]
+
+==================================================
+FILE: ./.git/objects/8f/23d68d4ddec198af0277e22a0668d0c1ff8b38
+==================================================
+
+[BINARY FILE - SKIPPED]
+
+==================================================
+FILE: ./.git/objects/8f/b2b86f67e6b66980f33e3bbd173dad5c18805f
+==================================================
+
+[BINARY FILE - SKIPPED]
+
+==================================================
+FILE: ./.git/objects/90/743f8b79389c717c98f2387f5302f6395cbe22
+==================================================
+
+[BINARY FILE - SKIPPED]
+
+==================================================
+FILE: ./.git/objects/91/13ba04309f9252248bdf5869c93b9ee50ca1a3
+==================================================
+
+[BINARY FILE - SKIPPED]
+
+==================================================
+FILE: ./.git/objects/95/14e5d590313d1096a29c534424c94a0c125df5
+==================================================
+
+[BINARY FILE - SKIPPED]
+
+==================================================
+FILE: ./.git/objects/96/ca97c80cd061a9a1b65cdaa27d49c78123f716
+==================================================
+
+[BINARY FILE - SKIPPED]
+
+==================================================
+FILE: ./.git/objects/9a/a5b4b552cd66c29d283bedda0e4c21f6878a7f
+==================================================
+
+[BINARY FILE - SKIPPED]
+
+==================================================
+FILE: ./.git/objects/9c/1f0ff4e6bb1320d2fd5cdb05d56bfe1b3db850
+==================================================
+
+[BINARY FILE - SKIPPED]
+
+==================================================
+FILE: ./.git/objects/9d/54431e7b5e619165781efb6f8e869e8cf9b852
+==================================================
+
+[BINARY FILE - SKIPPED]
+
+==================================================
+FILE: ./.git/objects/a6/bb82e5a96cf63fb3d29afee5282989a890f895
+==================================================
+
+[BINARY FILE - SKIPPED]
+
+==================================================
+FILE: ./.git/objects/ac/075b3b2231833b94e4bbe7fb66fc5e079cad2d
+==================================================
+
+[BINARY FILE - SKIPPED]
+
+==================================================
+FILE: ./.git/objects/ad/52dfcb1837aaa7d0d388d4283118df2bd5cccf
+==================================================
+
+[BINARY FILE - SKIPPED]
+
+==================================================
+FILE: ./.git/objects/ad/caa4844405efa783a57e60376c2a37a710a599
+==================================================
+
+[BINARY FILE - SKIPPED]
+
+==================================================
+FILE: ./.git/objects/ae/5e950860b7cf713c4a2daa96f187ca60c125c4
+==================================================
+
+[BINARY FILE - SKIPPED]
+
+==================================================
+FILE: ./.git/objects/b1/d84dd58457d193f908c51144944137a5f70cd3
+==================================================
+
+[BINARY FILE - SKIPPED]
+
+==================================================
+FILE: ./.git/objects/b4/3102d31b100d50047baaee72f1e5a5888a5ce1
+==================================================
+
+[BINARY FILE - SKIPPED]
+
+==================================================
+FILE: ./.git/objects/b7/b4e574b3f71c87e1a73366ca1e6b2dc5f39204
+==================================================
+
+[BINARY FILE - SKIPPED]
+
+==================================================
+FILE: ./.git/objects/bc/11c32a2680f99084a4f20545bd834f0b9f7d80
+==================================================
+
+[BINARY FILE - SKIPPED]
+
+==================================================
+FILE: ./.git/objects/c1/5a3987fba354e7accbf0b4a4954bf40b337ff4
+==================================================
+
+[BINARY FILE - SKIPPED]
+
+==================================================
+FILE: ./.git/objects/ce/62a9ac3457477c7c3e4bacd37b70a56d744bbf
+==================================================
+
+[BINARY FILE - SKIPPED]
+
+==================================================
+FILE: ./.git/objects/d2/f2d2ac025f0faa7e1f1a68d71407b0a2298d52
+==================================================
+
+[BINARY FILE - SKIPPED]
+
+==================================================
+FILE: ./.git/objects/d3/490cc820122dc3982e79681096f95ea49c444d
+==================================================
+
+[BINARY FILE - SKIPPED]
+
+==================================================
+FILE: ./.git/objects/d7/9af1f7167643daedf6016b6625203743448ce6
+==================================================
+
+[BINARY FILE - SKIPPED]
+
+==================================================
+FILE: ./.git/objects/d7/cec834892fed6858952978fbe52a8041ddc166
+==================================================
+
+[BINARY FILE - SKIPPED]
+
+==================================================
+FILE: ./.git/objects/d8/27f409f5bbdf25acdbe152488518f041abcf96
+==================================================
+
+[BINARY FILE - SKIPPED]
+
+==================================================
+FILE: ./.git/objects/df/3ba9ab9bfd848fc5a56c931f9bc9e09265a7e7
+==================================================
+
+[BINARY FILE - SKIPPED]
+
+==================================================
+FILE: ./.git/objects/ee/6f4bf3d495e6be58511536cc455afcc342e6a7
+==================================================
+
+[BINARY FILE - SKIPPED]
+
+==================================================
+FILE: ./.git/objects/f0/94bf269be52cb3fc02352dcbff5b199d63e4cb
+==================================================
+
+[BINARY FILE - SKIPPED]
+
+==================================================
+FILE: ./.git/objects/f1/af5fd504f02a409540cbe20b9a8490979b7dd7
+==================================================
+
+[BINARY FILE - SKIPPED]
+
+==================================================
+FILE: ./.git/objects/f2/39f078abc4697321ff80977bde72e80eacde8b
+==================================================
+
+[BINARY FILE - SKIPPED]
+
+==================================================
+FILE: ./.git/objects/f2/4e85ab9d478dfcc4616ec3ff49d65699ae77c5
+==================================================
+
+[BINARY FILE - SKIPPED]
+
+==================================================
+FILE: ./.git/objects/f3/39c53deb723e13335f0a8f9877b333309e04a3
+==================================================
+
+[BINARY FILE - SKIPPED]
+
+==================================================
+FILE: ./.git/objects/fc/3fbe5982496654c5d105b17873a31906532564
+==================================================
+
+[BINARY FILE - SKIPPED]
+
+==================================================
+FILE: ./.git/objects/fc/e8e1da5d4fa1e899e553cf1977d50b80350b3f
+==================================================
+
+[BINARY FILE - SKIPPED]
+
+==================================================
+FILE: ./.git/objects/fd/e1b5da0227c7a4e98c72b9c673fe9aceaff416
+==================================================
+
+[BINARY FILE - SKIPPED]
+
+==================================================
+FILE: ./.git/objects/ff/e8dce48cc7109f8e328220e0d2cf9bdd80713c
+==================================================
+
+[BINARY FILE - SKIPPED]
+
+==================================================
+FILE: ./.git/refs/heads/main
+==================================================
+
+d7cec834892fed6858952978fbe52a8041ddc166
+
+==================================================
+FILE: ./.git/refs/remotes/origin/main
+==================================================
+
+d7cec834892fed6858952978fbe52a8041ddc166
+
+==================================================
+FILE: ./index.html
+==================================================
+
+---
+layout: default
+title: Home
+---
+
+<!-- =========================
+     Hero
+     ========================= -->
+<div class="hero">
+  <div class="hero__bg"></div>
+
+  <div class="hero__inner">
+    <div class="badge">Offensive Security · Research Vault</div>
+
+    <h1 class="h1">sudoxs · Security Research Vault</h1>
+
+    <p class="lead">
+      A quiet archive of security research, write-ups, and tools.
+      Focused on offensive security, real-world vulnerability analysis,
+      and practical automation.
+      This site exists to document work — not to advertise it.
+    </p>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card__title">Write-ups</div>
+        <div class="card__text">
+          Detailed notes on vulnerabilities, exploitation paths,
+          and security observations from labs and real targets.
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card__title">Tooling</div>
+        <div class="card__text">
+          Small, focused security tools built for testing, automation,
+          and controlled experimentation — designed to solve problems,
+          not to impress.
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card__title">Notes & References</div>
+        <div class="card__text">
+          Curated technical notes and lesser-known security resources
+          collected for long-term use and repeated reference.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+==================================================
+FILE: ./.jekyll-cache/.gitignore
+==================================================
+
+# ignore everything in this directory
+*
+
+==================================================
+FILE: ./.jekyll-cache/Jekyll/Cache/Jekyll--Cache/b7/9606fb3afea5bd1609ed40b622142f1c98125abcfe89a76a661b0e8e343910
+==================================================
+
+[BINARY FILE - SKIPPED]
+
+==================================================
+FILE: ./.jekyll-cache/Jekyll/Cache/Jekyll--Converters--Markdown/34/cb11bf046bb6e7b32248dfb666402983ff72548bc5d6f1199c7618925c8758
+==================================================
+
+[BINARY FILE - SKIPPED]
+
+==================================================
+FILE: ./.jekyll-cache/Jekyll/Cache/Jekyll--Converters--Markdown/35/15e24a6c56d874c232e3fe6391216c09c1c1f93fe7a7ee2d606911cbba96ae
+==================================================
+
+[BINARY FILE - SKIPPED]
+
+==================================================
+FILE: ./_layouts/default.html
+==================================================
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- =========================
+         Base / SEO
+         ========================= -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="description" content="{{ site.description | escape }}" />
+
+    <title>
+      {% if page.title %}{{ page.title | escape }} · {% endif %}{{ site.title | escape }}
+    </title>
+
+    <!-- =========================
+         Base Path Auto-Detect
+         - Works on local jekyll serve and GitHub Pages project site
+         ========================= -->
+    {% assign _base = site.baseurl %}
+    {% if _base == "" and site.github and site.github.repository_name %}
+      {% assign _base = "/" | append: site.github.repository_name %}
+    {% endif %}
+    <meta name="site-base" content="{{ _base }}" />
+
+    <!-- Keep <base> for plain relative links -->
+    <base href="{% if _base == "" %}/{% else %}{{ _base }}/{% endif %}">
+
+    <!-- =========================
+         Styles (robust under any base)
+         ========================= -->
+    <link rel="stylesheet" href="{{ '/assets/css/site.css' | relative_url }}" />
+  </head>
+
+  <body>
+    <!-- Loading Screen -->
+    <div id="loadingScreen" aria-hidden="false" role="status" aria-live="polite">
+      <div class="loader" aria-label="Loading"></div>
+      <div class="loadingText">Loading…</div>
+    </div>
+
+
+    <!-- App Shell -->
+    <div class="app">
+
+      <!-- =========================
+           Sidebar (Hamburger Drawer)
+           ========================= -->
+      <aside id="drawer" class="drawer" aria-hidden="true">
+        <div class="drawer__header">
+          <div class="brand">
+            <div class="brand__dot"></div>
+            <div class="brand__text">
+              <div class="brand__name">{{ site.title }}</div>
+              <div class="brand__tag">Security Vault</div>
+            </div>
+          </div>
+
+          <button id="drawerClose" class="iconBtn" type="button" aria-label="Close menu">
+            ✕
+          </button>
+        </div>
+
+        <!-- =========================
+             Drawer Search
+             ========================= -->
+        <div class="drawer__search">
+          <input
+            id="searchInput"
+            class="input"
+            type="search"
+            placeholder="Search files & pages…"
+            autocomplete="off"
+          />
+          <div id="searchMeta" class="muted small"></div>
+        </div>
+
+        <!-- =========================
+             Drawer Vault Explorer
+             ========================= -->
+        <nav class="drawer__nav">
+          <div class="navTitle">Vault</div>
+          <div id="drawerBreadcrumb" class="drawerBreadcrumb">/content</div>
+
+          <div id="drawerList" class="drawerList">
+            <div class="muted small">Loading…</div>
+          </div>
+        </nav>
+
+        <!-- =========================
+             Drawer Footer
+             ========================= -->
+        <div class="drawer__footer">
+          <a class="link" href="https://github.com/sudoxs" target="_blank" rel="noopener noreferrer">GitHub</a>
+          <span class="muted small">© {{ site.time | date: "%Y" }} {{ site.title }}</span>
+        </div>
+      </aside>
+
+      <!-- Overlay -->
+      <div id="overlay" class="overlay" hidden></div>
+
+      <!-- Side Panels -->
+      <div class="side left">
+        <div class="sideBox">
+          <div class="sideTitle">SYSTEM</div>
+          <div class="sideText">ONLINE</div>
+        </div>
+      </div>
+
+      <div class="side right">
+        <div class="sideBox">
+          <div class="sideTitle">ACCESS</div>
+          <div class="sideText">GRANTED</div>
+        </div>
+      </div>
+
+      <!-- =========================
+           Main
+           ========================= -->
+      <main class="main">
+        <header class="topbar">
+          <button id="drawerOpen" class="iconBtn" type="button" aria-label="Open menu">
+            ☰
+          </button>
+
+          <div class="center-system">
+            <a href="{{ '/map/' | relative_url }}" class="iconBtn" aria-label="Content directory tree">MAP</a>
+          </div>
+
+          <div class="center-system">
+            <a href="{{ '/' | relative_url }}" class="hacker-btn" aria-label="Go to Home">{{ site.title }}</a>
+          </div>
+
+          <div class="topbar__right">
+            <a class="iconBtn" href="https://github.com/sudoxs" target="_blank" rel="noopener noreferrer">GitHub</a>
+          </div>
+        </header>
+
+        <!-- Page Content -->
+        <section class="content">
+          {{ content }}
+        </section>
+
+        <footer class="pageFooter">
+          <span class="muted small">© {{ site.title }}</span>
+        </footer>
+      </main>
+    </div>
+
+    <!-- =========================
+         Scripts (robust under any base)
+         ========================= -->
+    <script src="{{ '/assets/js/site.js' | relative_url }}" defer></script>
+  </body>
+</html>
+
+==================================================
+FILE: ./README.md
+==================================================
+
+# sudoxs_web
+
+===== END OF PROJECT =====
