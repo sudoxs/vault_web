@@ -1,34 +1,25 @@
-# # =========================
-# # Jekyll Config
-# # =========================
+# =========================
+# Site Config — edit these or run: python3 setup.py
+# =========================
 
-# title: sudoxs
-# description: "Security portfolio & knowledge vault"
-# markdown: kramdown
+title:       "sudoxs"
+tagline:     "Security Research Vault"
+description: "A quiet archive of security research, write-ups, and tools."
+author:      "sudoxs"
 
-# # We keep baseurl empty to avoid local-vs-GitHub mismatch.
-# # We will auto-detect repo base path on GitHub Pages using site.github variables in templates.
-# baseurl: ""
+url:         "https://sudoxs.github.io"
+baseurl:     "/sudoxs_web"
 
-# # Keep it simple (GitHub Pages compatible)
-# plugins: []
+github_url:  "https://github.com/sudoxs"
 
-# # Optional: exclude things you don't want published
-# exclude:
-#   - README.md
-#   - .gitignore
-#   - Gemfile
-#   - Gemfile.lock
-#   - vendor
+# Folder where your markdown and files live
+content_dir: "content"
 
-title: sudoxs
-description: "Security portfolio & knowledge vault"
+# Search engine crawling
+robots: "index, follow"
+
 markdown: kramdown
-
-url: "https://sudoxs.github.io"
-baseurl: "/sudoxs_web"
-
-plugins: []
+plugins:  []
 
 exclude:
   - README.md
@@ -38,3 +29,7 @@ exclude:
   - vendor
   - _site
   - .jekyll-cache
+  - setup.py
+  - "*.example"
+  - project_dump.txt
+  - dump_project.sh

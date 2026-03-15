@@ -3,50 +3,39 @@ layout: default
 title: Home
 ---
 
-<!-- =========================
-     Hero
-     ========================= -->
 <div class="hero">
   <div class="hero__bg"></div>
-
   <div class="hero__inner">
-    <div class="badge">Offensive Security · Research Vault</div>
+    <div class="badge">{{ site.tagline }}</div>
 
-    <h1 class="h1">sudoxs · Security Research Vault</h1>
+    <h1 class="h1">{{ site.title }}</h1>
 
-    <p class="lead">
-      A quiet archive of security research, write-ups, and tools.
-      Focused on offensive security, real-world vulnerability analysis,
-      and practical automation.
-      This site exists to document work — not to advertise it.
-    </p>
+    <p class="lead">{{ site.description }}</p>
 
     <div class="cards">
       <div class="card">
-        <div class="card__title">Write-ups</div>
+        <div class="card__title">Browse Vault</div>
         <div class="card__text">
-          Detailed notes on vulnerabilities, exploitation paths,
-          and security observations from labs and real targets.
+          Open the menu (☰) to explore folders and files inside <code>/{{ site.content_dir }}</code>.
+          Drop any Markdown file there and it appears automatically.
         </div>
       </div>
 
       <div class="card">
-        <div class="card__title">Tooling</div>
+        <div class="card__title">Search</div>
         <div class="card__text">
-          Small, focused security tools built for testing, automation,
-          and controlled experimentation — designed to solve problems,
-          not to impress.
+          Use the search bar inside the menu to find files and pages
+          by name, path, or content — built at deploy time, no server needed.
         </div>
       </div>
 
       <div class="card">
-        <div class="card__title">Notes & References</div>
+        <div class="card__title">Map</div>
         <div class="card__text">
-          Curated technical notes and lesser-known security resources
-          collected for long-term use and repeated reference.
+          Hit <a href="{{ '/map/' | relative_url }}" class="link">MAP</a> in the topbar
+          to see the full directory tree of your vault at a glance.
         </div>
       </div>
     </div>
   </div>
 </div>
-

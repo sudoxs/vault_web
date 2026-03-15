@@ -1,57 +1,46 @@
 // =========================
-// sudoxs_web - site.js
-// - English-only comments by request
-// - Safe DOM updates (no innerHTML for untrusted strings)
+// Vault — site.js
 // =========================
 
 // =========================
-// Base Path Helpers
+// Base path
 // =========================
-function getBasePath() {
-  const meta = document.querySelector('meta[name="site-base"]');
-  const base = meta ? meta.getAttribute("content") : "";
-  return base || ""; // "" or "/repo"
+function getBase() {
+  const m = document.querySelector('meta[name="site-base"]');
+  return m ? m.getAttribute("content") : "";
 }
 
-function withBase(urlPath) {
-  const base = getBasePath();
-  if (!urlPath) return base || "";
-
-  // If already prefixed with base (avoid double prefix)
-  if (base && urlPath.startsWith(base + "/")) return urlPath;
-
-  if (!urlPath.startsWith("/")) return (base ? base + "/" : "/") + urlPath;
-  return (base || "") + urlPath;
+function withBase(path) {
+  const base = getBase();
+  if (!path) return base || "";
+  if (base && path.startsWith(base + "/")) return path;
+  if (!path.startsWith("/")) return (base ? base + "/" : "/") + path;
+  return (base || "") + path;
 }
 
 // =========================
-// Drawer UI
+// Drawer
 // =========================
-const drawer = document.getElementById("drawer");
+const drawer  = document.getElementById("drawer");
 const overlay = document.getElementById("overlay");
 const btnOpen = document.getElementById("drawerOpen");
-const btnClose = document.getElementById("drawerClose");
+const btnClose= document.getElementById("drawerClose");
 
-function openDrawer() {
-  if (!drawer || !overlay) return;
-  drawer.classList.add("isOpen");
-  drawer.setAttribute("aria-hidden", "false");
-  overlay.hidden = false;
+function openDrawer()  {
+  drawer?.classList.add("isOpen");
+  drawer?.setAttribute("aria-hidden","false");
+  if (overlay) overlay.hidden = false;
 }
-
 function closeDrawer() {
-  if (!drawer || !overlay) return;
-  drawer.classList.remove("isOpen");
-  drawer.setAttribute("aria-hidden", "true");
-  overlay.hidden = true;
+  drawer?.classList.remove("isOpen");
+  drawer?.setAttribute("aria-hidden","true");
+  if (overlay) overlay.hidden = true;
 }
 
 btnOpen?.addEventListener("click", openDrawer);
 btnClose?.addEventListener("click", closeDrawer);
 overlay?.addEventListener("click", closeDrawer);
-
-document.addEventListener("keydown", (e) => {
-  // Only close when drawer is open
+document.addEventListener("keydown", e => {
   if (e.key === "Escape" && drawer?.classList.contains("isOpen")) closeDrawer();
 });
 
@@ -59,49 +48,51 @@ document.addEventListener("keydown", (e) => {
 // State
 // =========================
 let INDEX = null;
-let CURRENT_FOLDER = "/content";
-let TREE = null;
+let TREE  = null;
+let CONTENT_DIR = "/content";
+let CURRENT_FOLDER = CONTENT_DIR;
 
 // =========================
-// Data Load
+// Fetch index
 // =========================
 async function loadIndex() {
   const res = await fetch(withBase("/assets/search_index.json"), { cache: "no-store" });
-  if (!res.ok) throw new Error("Failed to load search_index.json");
+  if (!res.ok) throw new Error("search_index.json not found");
   return res.json();
 }
 
 // =========================
-// Tree Helpers
+// Tree helpers
 // =========================
 function splitPath(p) {
   return (p || "").replace(/^\/+/, "").split("/").filter(Boolean);
 }
 
-function isUnderContent(pathArr) {
-  return pathArr.length > 0 && pathArr[0] === "content";
+function isUnderContentDir(parts) {
+  const dir = CONTENT_DIR.replace(/^\/+/, "");
+  return parts.length > 0 && parts[0] === dir;
 }
 
 function buildTree(items) {
   const root = { name: "/", children: new Map(), items: [] };
 
   for (const it of items) {
-    const ref = it.url || it.path || "";
+    const ref   = it.url || it.path || "";
     const parts = splitPath(ref);
-    if (!isUnderContent(parts)) continue;
+    if (!isUnderContentDir(parts)) continue;
 
     let node = root;
     for (let i = 0; i < parts.length; i++) {
-      const seg = parts[i];
+      const seg    = parts[i];
       const isLast = i === parts.length - 1;
 
       if (isLast) {
         node.items.push({
-          kind: it.type, // "file" | "page"
-          name: it.type === "page" ? (it.title || seg) : (it.name || seg),
-          url: it.url,
-          path: it.path,
-          fullPath: "/" + parts.join("/")
+          kind:     it.type,
+          name:     it.type === "page" ? (it.title || seg) : (it.name || seg),
+          url:      it.url,
+          path:     it.path,
+          fullPath: "/" + parts.join("/"),
         });
       } else {
         if (!node.children.has(seg)) {
@@ -111,14 +102,12 @@ function buildTree(items) {
       }
     }
   }
-
   return root;
 }
 
-function findNodeByPath(treeRoot, folderPath) {
+function findNode(root, folderPath) {
   const parts = splitPath(folderPath);
-  let node = treeRoot;
-
+  let node = root;
   for (const seg of parts) {
     if (!node.children.has(seg)) return null;
     node = node.children.get(seg);
@@ -127,120 +116,99 @@ function findNodeByPath(treeRoot, folderPath) {
 }
 
 // =========================
-// DOM Helpers (safe)
+// DOM helpers
 // =========================
-function el(tag, className) {
+function el(tag, cls) {
   const x = document.createElement(tag);
-  if (className) x.className = className;
+  if (cls) x.className = cls;
   return x;
 }
 
-function setDrawerBreadcrumb(text) {
+function setBC(text) {
   const bc = document.getElementById("drawerBreadcrumb");
-  if (!bc) return;
-  bc.textContent = text;
-}
-
-function getDrawerList() {
-  return document.getElementById("drawerList");
+  if (bc) bc.textContent = text;
 }
 
 // =========================
-// Drawer Explorer Rendering
+// Render drawer folder
 // =========================
 function renderFolder(folderPath) {
   CURRENT_FOLDER = folderPath;
-
-  const list = getDrawerList();
+  const list = document.getElementById("drawerList");
   if (!list) return;
 
   list.textContent = "";
 
-  const node = findNodeByPath(TREE, folderPath);
+  const node = findNode(TREE, folderPath);
   if (!node) {
     const msg = el("div", "muted small");
-    msg.textContent = "Folder not found in index.";
+    msg.textContent = "Folder not found.";
     list.appendChild(msg);
-    setDrawerBreadcrumb(folderPath);
+    setBC(folderPath);
     return;
   }
 
-  setDrawerBreadcrumb(folderPath);
+  setBC(folderPath);
 
-  // Back item (except /content)
-  if (folderPath !== "/content") {
-    const backRow = el("div", "drawerItem");
-    const left = el("div", "drawerItem__left");
-
-    const icon = el("div", "icon");
+  // Back button
+  if (folderPath !== CONTENT_DIR) {
+    const backRow  = el("div", "drawerItem");
+    const left     = el("div", "drawerItem__left");
+    const icon     = el("div", "icon");
     icon.textContent = "↩";
-    const name = el("div", "drawerItem__name");
+    const name     = el("div", "drawerItem__name");
     name.textContent = ".. (Back)";
-
-    left.appendChild(icon);
-    left.appendChild(name);
+    left.appendChild(icon); left.appendChild(name);
 
     const btn = el("button", "drawerItem__btn");
-    btn.type = "button";
-    btn.textContent = "Up";
+    btn.type = "button"; btn.textContent = "Up";
     btn.addEventListener("click", () => {
       const parts = splitPath(folderPath);
       parts.pop();
-      const up = "/" + parts.join("/");
-      renderFolder(up || "/content");
+      renderFolder("/" + parts.join("/") || CONTENT_DIR);
     });
 
-    backRow.appendChild(left);
-    backRow.appendChild(btn);
+    backRow.appendChild(left); backRow.appendChild(btn);
     list.appendChild(backRow);
   }
 
   // Folders
-  const folders = [...node.children.values()].sort((a, b) => a.name.localeCompare(b.name));
+  const folders = [...node.children.values()].sort((a,b) => a.name.localeCompare(b.name));
   for (const f of folders) {
-    const row = el("div", "drawerItem");
-
+    const row  = el("div", "drawerItem");
     const left = el("div", "drawerItem__left");
     const icon = el("div", "icon");
     icon.textContent = "📁";
     const name = el("div", "drawerItem__name");
     name.textContent = f.name;
-
-    left.appendChild(icon);
-    left.appendChild(name);
+    left.appendChild(icon); left.appendChild(name);
 
     const btn = el("button", "drawerItem__btn");
-    btn.type = "button";
-    btn.textContent = "Open";
+    btn.type = "button"; btn.textContent = "Open";
     btn.addEventListener("click", () => renderFolder(`${folderPath}/${f.name}`));
 
-    row.appendChild(left);
-    row.appendChild(btn);
+    row.appendChild(left); row.appendChild(btn);
     list.appendChild(row);
   }
 
-  // Files/pages
-  const items = [...node.items].sort((a, b) => a.name.localeCompare(b.name));
+  // Files / pages
+  const items = [...node.items].sort((a,b) => a.name.localeCompare(b.name));
   for (const it of items) {
-    const row = el("div", "drawerItem");
-
+    const row  = el("div", "drawerItem");
     const left = el("div", "drawerItem__left");
     const icon = el("div", "icon");
-    icon.textContent = it.kind === "page" ? "📝" : "📄";
+    icon.textContent = it.kind === "page" ? "📝" : fileIcon(it.url || "");
     const name = el("div", "drawerItem__name");
     name.textContent = it.name;
-
-    left.appendChild(icon);
-    left.appendChild(name);
+    left.appendChild(icon); left.appendChild(name);
 
     const a = el("a", "link");
     a.href = withBase(it.url);
     a.textContent = "Open";
     a.rel = "noopener";
-    a.addEventListener("click", () => closeDrawer());
+    a.addEventListener("click", closeDrawer);
 
-    row.appendChild(left);
-    row.appendChild(a);
+    row.appendChild(left); row.appendChild(a);
     list.appendChild(row);
   }
 
@@ -252,18 +220,15 @@ function renderFolder(folderPath) {
 }
 
 // =========================
-// Content File Tree (ASCII)
-// - Renders full /content directory as nested lists
-// - Files/pages are links
-// - Requires an element: <div id="contentTree" class="file-tree"></div>
+// File tree (map page)
 // =========================
-function renderContentTree(mountId = "contentTree", rootPath = "/content") {
+function renderContentTree(mountId) {
   const mount = document.getElementById(mountId);
   if (!mount || !TREE) return;
 
   mount.textContent = "";
 
-  const rootNode = findNodeByPath(TREE, rootPath);
+  const rootNode = findNode(TREE, CONTENT_DIR);
   if (!rootNode) {
     const msg = el("div", "muted small");
     msg.textContent = "Content folder not found in index.";
@@ -273,60 +238,47 @@ function renderContentTree(mountId = "contentTree", rootPath = "/content") {
 
   const ul = el("ul");
   mount.appendChild(ul);
-  buildNodeList(rootNode, rootPath, ul);
+  buildNodeList(rootNode, CONTENT_DIR, ul);
 }
 
 function buildNodeList(node, folderPath, parentUl) {
-  const folders = [...node.children.values()].sort((a, b) => a.name.localeCompare(b.name));
-  const items = [...node.items].sort((a, b) => a.name.localeCompare(b.name));
+  const folders = [...node.children.values()].sort((a,b) => a.name.localeCompare(b.name));
+  const items   = [...node.items].sort((a,b) => a.name.localeCompare(b.name));
 
-  // Folders
   for (const f of folders) {
-    const li = el("li");
-
-    const row = el("span", "tree-row");
-
-    const toggle = el("button", "tree-toggle");
-    toggle.type = "button";
+    const li      = el("li");
+    const row     = el("span", "tree-row");
+    const toggle  = el("button", "tree-toggle");
+    toggle.type   = "button";
     toggle.textContent = "Open";
-
-    const label = el("span");
+    const label   = el("span");
     label.textContent = `📁 ${f.name}`;
-
-    row.appendChild(toggle);
-    row.appendChild(label);
+    row.appendChild(toggle); row.appendChild(label);
     li.appendChild(row);
 
     const childUl = el("ul");
     childUl.hidden = true;
     li.appendChild(childUl);
 
-    const childPath = `${folderPath}/${f.name}`;
-    let isOpen = false;
-
+    let open = false;
     toggle.addEventListener("click", () => {
-      isOpen = !isOpen;
-      toggle.textContent = isOpen ? "Close" : "Open";
-      childUl.hidden = !isOpen;
-
-      // Lazy render once
-      if (isOpen && childUl.childNodes.length === 0) {
-        buildNodeList(f, childPath, childUl);
+      open = !open;
+      toggle.textContent = open ? "Close" : "Open";
+      childUl.hidden = !open;
+      if (open && childUl.childNodes.length === 0) {
+        buildNodeList(f, `${folderPath}/${f.name}`, childUl);
       }
     });
 
     parentUl.appendChild(li);
   }
 
-  // Files/pages
   for (const it of items) {
     const li = el("li");
-
-    const a = el("a", "tree-link");
-    a.href = withBase(it.url);
-    a.rel = "noopener";
-    a.textContent = `${it.kind === "page" ? "📝" : "📄"} ${it.name}`;
-
+    const a  = el("a", "tree-link");
+    a.href   = withBase(it.url);
+    a.rel    = "noopener";
+    a.textContent = `${it.kind === "page" ? "📝" : fileIcon(it.url || "")} ${it.name}`;
     li.appendChild(a);
     parentUl.appendChild(li);
   }
@@ -339,20 +291,18 @@ function buildNodeList(node, folderPath, parentUl) {
 }
 
 // =========================
-// Secure Search (results inside drawer)
+// Search
 // =========================
-function normalize(s) {
-  return (s || "").toLowerCase().trim();
-}
-
 function attachSearch(allItems) {
   const input = document.getElementById("searchInput");
-  const meta = document.getElementById("searchMeta");
-  const list = getDrawerList();
+  const meta  = document.getElementById("searchMeta");
+  const list  = document.getElementById("drawerList");
   if (!input || !meta || !list) return;
 
+  const dirSegment = CONTENT_DIR.replace(/^\/+/, "");
+
   input.addEventListener("input", () => {
-    const q = normalize(input.value);
+    const q = input.value.toLowerCase().trim();
 
     if (!q) {
       meta.textContent = "";
@@ -362,43 +312,36 @@ function attachSearch(allItems) {
 
     const matches = allItems
       .filter(x => {
-        const where = normalize(`${x.path || ""} ${x.url || ""}`);
-        // Accept both "content/" and "/content/"
-        return where.includes("content/") || where.includes("/content/");
+        const ref = (x.path || x.url || "").toLowerCase();
+        return ref.includes(`${dirSegment}/`) || ref.includes(`/${dirSegment}/`);
       })
       .filter(x => {
         const title = x.type === "page" ? x.title : x.name;
-        const hay = normalize(`${title || ""} ${x.body || ""} ${x.path || ""} ${x.url || ""}`);
+        const hay   = `${title || ""} ${x.body || ""} ${x.path || ""} ${x.url || ""}`.toLowerCase();
         return hay.includes(q);
       })
       .slice(0, 40);
 
     meta.textContent = matches.length === 0 ? "No results" : `${matches.length} result(s)`;
-    setDrawerBreadcrumb(`/search: ${q}`);
-
+    setBC(`/search: ${q}`);
     list.textContent = "";
 
     for (const m of matches) {
-      const row = el("div", "drawerItem");
-
+      const row  = el("div", "drawerItem");
       const left = el("div", "drawerItem__left");
       const icon = el("div", "icon");
       icon.textContent = m.type === "page" ? "📝" : "📄";
-
       const name = el("div", "drawerItem__name");
       name.textContent = (m.type === "page" ? m.title : m.name) || "Untitled";
-
-      left.appendChild(icon);
-      left.appendChild(name);
+      left.appendChild(icon); left.appendChild(name);
 
       const a = el("a", "link");
-      a.href = withBase(m.url);
+      a.href  = withBase(m.url);
       a.textContent = "Open";
-      a.rel = "noopener";
-      a.addEventListener("click", () => closeDrawer());
+      a.rel   = "noopener";
+      a.addEventListener("click", closeDrawer);
 
-      row.appendChild(left);
-      row.appendChild(a);
+      row.appendChild(left); row.appendChild(a);
       list.appendChild(row);
     }
   });
@@ -411,65 +354,126 @@ function attachSearch(allItems) {
   try {
     INDEX = await loadIndex();
 
-    const all = [
-      ...(INDEX.pages || []).map(p => ({
-        type: "page",
-        title: p.title,
-        url: p.url,
-        path: p.path,
-        body: p.body
-      })),
+    // Read content_dir from index (set by _config.yml)
+    if (INDEX.content_dir) {
+      CONTENT_DIR    = "/" + INDEX.content_dir.replace(/^\/+|\/+$/g, "");
+      CURRENT_FOLDER = CONTENT_DIR;
+    }
 
-      ...(INDEX.files || []).map(f => ({
-        type: "file",
-        name: f.name,
-        url: f.url,
-        path: f.path
-      }))
+    // Update breadcrumb placeholder
+    setBC(CONTENT_DIR);
+
+    const all = [
+      ...(INDEX.pages || []).map(p => ({ type: "page", title: p.title, url: p.url, path: p.path, body: p.body })),
+      ...(INDEX.files || []).map(f => ({ type: "file", name: f.name,  url: f.url,  path: f.path })),
     ];
 
     TREE = buildTree(all);
-    window.__TREE__ = TREE;
-
     attachSearch(all);
-
-    // Initial view: content root inside drawer
-    renderFolder("/content");
-
-    // Optional: render full content tree if #contentTree exists on page
-    renderContentTree("contentTree", "/content");
-  } catch (e) {
+    renderFolder(CONTENT_DIR);
+    renderContentTree("contentTree");
+  } catch(e) {
     console.error(e);
-    const list = getDrawerList();
-    if (list) list.textContent = "Failed to load index.";
+    const list = document.getElementById("drawerList");
+    if (list) list.textContent = "Failed to load index. Run jekyll build first.";
   }
 })();
 
-
 // =========================
-// Loading Screen
-// - Hide on DOM ready (faster UX than window.load)
-// - Fade out smoothly, then optionally remove from layout
+// Loading screen
 // =========================
-(function initLoadingScreen() {
-  function hideLoader() {
-    const loader = document.getElementById("loadingScreen");
-    if (!loader) return;
-
-    // fade out
-    loader.classList.add("is-hidden");
-    loader.setAttribute("aria-hidden", "true");
-
-    // optional: remove after transition
-    window.setTimeout(() => {
-      loader.classList.add("is-gone");
-    }, 420);
+(function() {
+  function hide() {
+    const s = document.getElementById("loadingScreen");
+    if (!s) return;
+    s.classList.add("is-hidden");
+    s.setAttribute("aria-hidden", "true");
+    setTimeout(() => s.classList.add("is-gone"), 420);
   }
-
-  // Hide as soon as the DOM is ready (not waiting for images/fonts)
   if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", hideLoader, { once: true });
+    document.addEventListener("DOMContentLoaded", hide, { once: true });
   } else {
-    hideLoader();
+    hide();
   }
 })();
+
+// =========================
+// aria-expanded sync for drawer button
+// =========================
+document.addEventListener("DOMContentLoaded", () => {
+  const btn = document.getElementById("drawerOpen");
+  if (!btn) return;
+  const obs = new MutationObserver(() => {
+    btn.setAttribute("aria-expanded", drawer?.classList.contains("isOpen") ? "true" : "false");
+  });
+  if (drawer) obs.observe(drawer, { attributes: true, attributeFilter: ["class"] });
+});
+
+// =========================
+// Media file viewer
+// Detects images/video/audio in the drawer file list and renders previews
+// Also renders inline media on dedicated static file pages
+// =========================
+const IMG_EXT   = /\.(png|jpe?g|gif|webp|svg|avif|bmp)$/i;
+const VIDEO_EXT = /\.(mp4|webm|ogv|mov)$/i;
+const AUDIO_EXT = /\.(mp3|ogg|wav|flac|aac|m4a)$/i;
+
+function fileIcon(url) {
+  if (IMG_EXT.test(url))   return "🖼";
+  if (VIDEO_EXT.test(url)) return "🎬";
+  if (AUDIO_EXT.test(url)) return "🎵";
+  if (/\.pdf$/i.test(url)) return "📕";
+  if (/\.(zip|tar|gz|rar|7z)$/i.test(url)) return "📦";
+  if (/\.(md|txt)$/i.test(url)) return "📝";
+  return "📄";
+}
+
+function isMedia(url) {
+  return IMG_EXT.test(url) || VIDEO_EXT.test(url) || AUDIO_EXT.test(url);
+}
+
+// Override the drawerItem creation for files to use richer icons
+const _origRenderFolder = renderFolder;
+// Patch: replace file icon logic inside drawerItem rendering
+// (already uses fileIcon via the icon element — hook into boot instead)
+
+function injectMediaPreview() {
+  const mount = document.getElementById("page-content");
+  if (!mount) return;
+
+  // If this page is a static file served directly (no Jekyll layout),
+  // the URL itself is the file path. Only applies to raw static files.
+  const url = window.location.pathname;
+
+  if (IMG_EXT.test(url)) {
+    const wrap = document.createElement("div");
+    wrap.className = "media-wrap";
+    const img = document.createElement("img");
+    img.src = url;
+    img.alt = url.split("/").pop();
+    img.style.maxHeight = "80vh";
+    wrap.appendChild(img);
+    mount.prepend(wrap);
+  } else if (VIDEO_EXT.test(url)) {
+    const wrap = document.createElement("div");
+    wrap.className = "media-wrap";
+    const vid = document.createElement("video");
+    vid.src = url; vid.controls = true;
+    wrap.appendChild(vid);
+    mount.prepend(wrap);
+  } else if (AUDIO_EXT.test(url)) {
+    const wrap = document.createElement("div");
+    wrap.className = "media-wrap";
+    const aud = document.createElement("audio");
+    aud.src = url; aud.controls = true;
+    wrap.appendChild(aud);
+    mount.prepend(wrap);
+  }
+}
+
+// Run media detection on page load
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", injectMediaPreview, { once: true });
+} else {
+  injectMediaPreview();
+}
