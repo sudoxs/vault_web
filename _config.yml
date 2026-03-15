@@ -8,7 +8,7 @@ description: "A quiet archive of security research, write-ups, and tools."
 author:      "sudoxs"
 
 url:         "https://sudoxs.github.io"
-baseurl:     "/sudoxs_web"
+baseurl:     "/vault_web"
 
 github_url:  "https://github.com/sudoxs"
 
